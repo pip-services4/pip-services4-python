@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.refer.Reference
+    pip_services4_commons.refer.Reference
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Reference component implementation
@@ -14,7 +14,7 @@ from typing import Any
 class Reference(object):
     """
     Contains a reference to a component and locator to find it.
-    It is used by :class:`References <pip_services3_commons.refer.References.References>` to store registered component references.
+    It is used by :class:`References <pip_services4_commons.refer.References.References>` to store registered component references.
     """
 
     def __init__(self, locator: Any, component: Any):

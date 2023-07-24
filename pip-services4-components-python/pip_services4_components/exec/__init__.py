@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.__init__
+    pip_services4_commons.exec.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Contains design patterns for the standard lifecycle of objects (opened,

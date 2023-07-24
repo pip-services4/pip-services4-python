@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.Closer
+    pip_services4_commons.exec.Closer
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Closer component implementation
@@ -25,7 +25,7 @@ class Closer:
         """
         Closes specific component.
 
-        To be closed components must implement :class:`IClosable <pip_services3_commons.exec.IClosable.IClosable>` interface.
+        To be closed components must implement :class:`IClosable <pip_services4_commons.exec.IClosable.IClosable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.
@@ -40,7 +40,7 @@ class Closer:
         """
         Closes multiple components.
 
-        To be closed components must implement :class:`IClosable <pip_services3_commons.exec.IClosable.IClosable>` interface.
+        To be closed components must implement :class:`IClosable <pip_services4_commons.exec.IClosable.IClosable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.

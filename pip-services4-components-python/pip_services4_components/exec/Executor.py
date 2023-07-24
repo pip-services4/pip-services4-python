@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.Executor
+    pip_services4_commons.exec.Executor
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Executor component implementation
@@ -25,7 +25,7 @@ class Executor:
     def execute_one(context: Optional[IContext], component: Any, args: Parameters):
         """
         Executes specific component.
-        To be executed components must implement :class:`IExecutable <pip_services3_commons.exec.IExecutable.IExecutable>` interface.
+        To be executed components must implement :class:`IExecutable <pip_services4_commons.exec.IExecutable.IExecutable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.
@@ -46,7 +46,7 @@ class Executor:
         """
         Executes multiple components.
 
-        To be executed components must implement :class:`IExecutable <pip_services3_commons.exec.IExecutable.IExecutable>` interface.
+        To be executed components must implement :class:`IExecutable <pip_services4_commons.exec.IExecutable.IExecutable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.

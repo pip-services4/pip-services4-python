@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.IOpenable
+    pip_services4_commons.exec.IOpenable
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for openable components
@@ -18,7 +18,7 @@ from .IClosable import IClosable
 class IOpenable(IClosable):
     """
     Interface for components that require explicit opening and closing.
-    For components that perform opening on demand consider using :class:`IClosable <pip_services3_commons.exec.IClosable.IClosable>` interface instead.
+    For components that perform opening on demand consider using :class:`IClosable <pip_services4_commons.exec.IClosable.IClosable>` interface instead.
 
     .. code-block:: python
         class MyPersistence(IOpenable):

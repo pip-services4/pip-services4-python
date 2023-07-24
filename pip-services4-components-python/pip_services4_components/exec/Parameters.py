@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.Parameters
+    pip_services4_commons.exec.Parameters
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Parameters component implementation

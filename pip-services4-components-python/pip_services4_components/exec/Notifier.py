@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.exec.Notifier
+    pip_services4_commons.exec.Notifier
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Notifier component implementation
@@ -25,7 +25,7 @@ class Notifier:
     def notify_one(context: Optional[IContext], component: Any, args: Parameters):
         """
         Notifies specific component.
-        To be notiied components must implement :class:`INotifiable <pip_services3_commons.exec.INotifiable.INotifiable>` interface.
+        To be notiied components must implement :class:`INotifiable <pip_services4_commons.exec.INotifiable.INotifiable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.
@@ -45,7 +45,7 @@ class Notifier:
         """
         Notifies multiple components.
 
-        To be notified components must implement :class:`INotifiable <pip_services3_commons.exec.INotifiable.INotifiable>` interface.
+        To be notified components must implement :class:`INotifiable <pip_services4_commons.exec.INotifiable.INotifiable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.

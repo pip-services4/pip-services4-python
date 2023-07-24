@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.refer.References
+    pip_services4_commons.refer.References
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Referencescomponent implementation
@@ -19,7 +19,7 @@ from .ReferenceException import ReferenceException
 
 class References(IReferences):
     """
-    The most basic implementation of :class:`IReferences <pip_services3_commons.refer.IReferences.IReferences>` to store and locate component references.
+    The most basic implementation of :class:`IReferences <pip_services4_commons.refer.IReferences.IReferences>` to store and locate component references.
 
     Example:
 
@@ -183,7 +183,7 @@ class References(IReferences):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services3_commons.refer.ReferenceException.ReferenceException>` when no references found.
+        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
         """
         return self.find(locator, True)
 
@@ -209,7 +209,7 @@ class References(IReferences):
 
          :return: a matching component reference.
 
-         :raises: a :class:`ReferenceException <pip_services3_commons.refer.ReferenceException.ReferenceException>` when no references found.
+         :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
          """
         components = self.find(locator, True)
         return components[0] if len(components) > 0 else None
@@ -224,7 +224,7 @@ class References(IReferences):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services3_commons.refer.ReferenceException.ReferenceException>` when __required is set to true but no references found.
+        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when __required is set to true but no references found.
         """
         if locator is None:
             raise Exception("Locator cannot be null")

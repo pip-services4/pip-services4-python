@@ -14,7 +14,7 @@ class Context(IContext):
     See :class:`IContext <pip_services4_components.context.IContext.IContext>`
     See :class:`AnyValueMap <pip_services4_commons.data.AnyValueMap.AnyValueMap>`
     """
-    def __int__(self, values: Any):
+    def __init__(self, values: Any):
         """
         Gets a map element specified by its key.
 

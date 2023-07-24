@@ -1,5 +1,5 @@
 pytest
 
 pip_services4_commons >= 0.0.1, < 1.0
-pip_services4_components >= 0.0.2, < 1.0
+pip_services4_components >= 0.0.4, < 1.0
 pip_services4_expressions >= 0.0.1, < 1.0

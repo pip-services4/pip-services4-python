@@ -18,7 +18,7 @@ class DefaultDiscoveryFactory(Factory):
     """
     Creates :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` components by their descriptors.
 
-    See :class:`Factory <pip_services4_config.build.Factory.Factory>`,
+    See :class:`Factory <pip_services4_components.build.Factory.Factory>`,
     :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`,
     :class:`MemoryDiscovery <pip_services4_config.connect.MemoryDiscovery.MemoryDiscovery>`,
     """

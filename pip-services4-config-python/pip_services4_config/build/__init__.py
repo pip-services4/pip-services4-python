@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services4_config.build.__init__
+    pip_services4_components.build.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Contains the "factory design pattern". There are various factory types,

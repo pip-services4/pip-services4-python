@@ -9,9 +9,9 @@
     :license: MIT, see LICENSE for more details.
 """
 from pip_services4_components.refer import Descriptor
+from pip_services4_components.build import Factory
 
 from .MemoryCredentialStore import MemoryCredentialStore
-from ..build.Factory import Factory
 
 
 class DefaultCredentialStoreFactory(Factory):
@@ -19,7 +19,7 @@ class DefaultCredentialStoreFactory(Factory):
     Creates :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
      components by their descriptors.
 
-    See :class:`IFactory <pip_services4_config.build.IFactory.IFactory>`,
+    See :class:`IFactory <pip_services4_components.build.IFactory.IFactory>`,
     :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`,
     :class:`MemoryCredentialStore <pip_services4_config.auth.MemoryCredentialStore.MemoryCredentialStore>`,
     """

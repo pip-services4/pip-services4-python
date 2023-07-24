@@ -20,7 +20,7 @@ class DefaultConfigFactory(Factory):
     YamlConfigReaderDescriptor = Descriptor("pip-services", "config-reader", "yaml", "*", "1.0")
     MemoryDiscoveryDescriptor = Descriptor("pip-services", "discovery", "memory", "*", "1.0")
 
-    def __int__(self):
+    def __init__(self):
         super().__init__()
 
         self.register_as_type(DefaultConfigFactory.MemoryCredentialStoreDescriptor, MemoryCredentialStore)

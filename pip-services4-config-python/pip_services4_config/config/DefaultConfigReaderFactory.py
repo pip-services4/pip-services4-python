@@ -20,7 +20,7 @@ class DefaultConfigReaderFactory(Factory):
     """
     Creates :class:`IConfigReader <pip_services4_config.config.IConfigReader.IConfigReader>` components by their descriptors.
 
-    See :class:`Factory <pip_services4_config.build.Factory.Factory>`,
+    See :class:`Factory <pip_services4_components.build.Factory.Factory>`,
     :class:`MemoryConfigReader <pip_services4_config.config.MemoryConfigReader.MemoryConfigReader>`,
     :class:`JsonConfigReader <pip_services4_config.config.JsonConfigReader.JsonConfigReader>`,
     :class:`YamlConfigReader <pip_services4_config.config.YamlConfigReader.YamlConfigReader>`

@@ -14,6 +14,7 @@ class Context(IContext):
     See :class:`IContext <pip_services4_components.context.IContext.IContext>`
     See :class:`AnyValueMap <pip_services4_commons.data.AnyValueMap.AnyValueMap>`
     """
+
     def __init__(self, values: Any):
         """
         Gets a map element specified by its key.
@@ -22,6 +23,9 @@ class Context(IContext):
         :return: the value of the map element.
         """
         self._values = AnyValueMap(values)
+
+    def get(self, key: str) -> Any:
+        return self._values.get(key)
 
     @staticmethod
     def from_value(value: Any) -> 'Context':
@@ -74,6 +78,3 @@ class Context(IContext):
         :return: a new Parameters object.
         """
         return Context(Parameters.from_tuples("trace_id", trace_id))
-
-
-

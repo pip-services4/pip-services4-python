@@ -1,0 +1,16 @@
+/.idea
+/data/dummies.json
+/build
+/dist
+.DS_Store
+*.pyc
+*.pyo
+env
+env*
+*.egg
+*.egg-info
+_mailinglist
+.tox
+.cache/
+.idea/
+.pytest_cache/

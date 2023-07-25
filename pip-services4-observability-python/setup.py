@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services4_observability',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/pip-services4/pip-services4-python/pip-services4-observability-python',
     license='MIT',
     description='Observability components for Pip.Services in Python',
@@ -36,8 +36,8 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'pip_services4_commons >= 0.0.1, < 4.0',
-        'pip_services4_components >= 0.0.1, < 4.0',
+        'pip_services4_commons >= 0.0.2, < 4.0',
+        'pip_services4_components >= 0.0.2, < 4.0',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

@@ -77,7 +77,7 @@ component factories similar to the example below.
 
 ```python
 from pip_services3_commons.refer import Descriptor
-from pip_services4_logic.build import Factory
+from pip_services4_components.build import Factory
 
 
 class MyFactory(Factory):

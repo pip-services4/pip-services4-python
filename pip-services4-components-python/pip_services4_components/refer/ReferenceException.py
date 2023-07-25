@@ -12,7 +12,8 @@ from typing import Any, Optional
 
 from pip_services4_commons.errors import InternalException
 
-from pip_services4_components.context import ContextResolver, IContext
+from ..context.ContextResolver import ContextResolver
+from ..context.IContext import IContext
 
 
 class ReferenceException(InternalException):

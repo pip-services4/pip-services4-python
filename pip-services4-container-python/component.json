@@ -1,8 +1,8 @@
 {
-    "name":  "pip-services4-logic",
+    "name":  "pip-services4-container",
     "type": "module",
     "language": "python",
-    "version": "0.0.5",
+    "version": "0.0.1",
     "build": 0,
     "registry": "pipservices",
     "artifacts": [

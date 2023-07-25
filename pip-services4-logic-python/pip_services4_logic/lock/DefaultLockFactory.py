@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from pip_services4_components.refer import Descriptor
 
-from pip_services4_logic.build import Factory
+from pip_services4_components.build import Factory
 from .MemoryLock import MemoryLock
 from .NullLock import NullLock
 

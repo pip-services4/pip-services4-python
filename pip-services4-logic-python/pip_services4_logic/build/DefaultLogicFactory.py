@@ -1,6 +1,6 @@
 from pip_services4_components.refer import Descriptor
 
-from pip_services4_logic.build import Factory
+from pip_services4_components.build import Factory
 from pip_services4_logic.cache import MemoryCache, NullCache
 from pip_services4_logic.lock import NullLock, MemoryLock
 from pip_services4_logic.state import MemoryStateStore, NullStateStore

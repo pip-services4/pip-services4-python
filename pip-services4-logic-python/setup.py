@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services4_logic',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/pip-services4/pip-services4-python/pip-services4-logic-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
@@ -37,7 +37,7 @@ setup(
     platforms='any',
     install_requires=[
         'PyYAML >= 6.0, < 7.0',
-        'pip_services4_commons >= 0.0.2, < 1.0',
+        'pip_services4_commons >= 0.0.1, < 1.0',
         'pip_services4_components >= 0.0.2, < 1.0',
     ],
     classifiers=[

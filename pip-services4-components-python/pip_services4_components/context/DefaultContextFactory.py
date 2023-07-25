@@ -14,7 +14,7 @@ from ..build.Factory import Factory
 from ..refer.Descriptor import Descriptor
 
 
-class DefaultInfoFactory(Factory):
+class DefaultContextFactory(Factory):
     """
     Creates information components by their descriptors.
 
@@ -22,13 +22,13 @@ class DefaultInfoFactory(Factory):
     :class:`ContextInfo <pip_services4_components.context.ContextInfo.ContextInfo>`
     """
 
-    ContextInfoDescriptor = Descriptor("pip-services", "context-context", "default", "*", "1.0")
-    ContainerInfoDescriptor = Descriptor("pip-services", "container-context", "default", "*", "1.0")
+    ContextInfoDescriptor = Descriptor("pip-services", "context-info", "default", "*", "1.0")
+    ContainerInfoDescriptor = Descriptor("pip-services", "container-info", "default", "*", "1.0")
 
     def __init__(self):
         """
         Create a new instance of the factory.
         """
         super().__init__()
-        self.register_as_type(DefaultInfoFactory.ContextInfoDescriptor, ContextInfo)
-        self.register_as_type(DefaultInfoFactory.ContainerInfoDescriptor, ContextInfo)
+        self.register_as_type(DefaultContextFactory.ContextInfoDescriptor, ContextInfo)
+        self.register_as_type(DefaultContextFactory.ContainerInfoDescriptor, ContextInfo)

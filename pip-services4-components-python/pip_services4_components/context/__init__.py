@@ -11,10 +11,10 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__all__ = ['ContextInfo', 'DefaultInfoFactory', 'IContext', 'Context', 'ContextResolver']
+__all__ = ['ContextInfo', 'DefaultContextFactory', 'IContext', 'Context', 'ContextResolver']
 
 from .ContextInfo import ContextInfo
-from .DefaultInfoFactory import DefaultInfoFactory
+from .DefaultContextFactory import DefaultContextFactory
 from .IContext import IContext
 from .Context import Context
 from .ContextResolver import ContextResolver

@@ -1,6 +1,14 @@
 {
-    "name": "pip_services4_expressions",
-    "registry": "pipdevs",
-    "version": "0.0.1",
-    "build": 0
+    "name":  "pip-services4-expressions",
+    "type": "module",
+    "language": "python",
+    "version": "0.0.2",
+    "build": 0,
+    "registry": "pipservices",
+    "artifacts": [
+        {
+            "name":  "<name>",
+            "type": "pypi"
+        }
+    ]
 }

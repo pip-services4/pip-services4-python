@@ -1,0 +1,6 @@
+pytest
+
+pip_services4_commons >= 0.0.1, < 1.0
+pip_services4_components >= 0.0.1, < 1.0
+pip_services4_data >= 0.0.3, < 1.0
+pip_services4_observability >= 0.0.1, < 1.0

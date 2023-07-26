@@ -3,13 +3,13 @@ Pip.Services Data
 ------------------
 
 Pip.Services is an open-source library of basic microservices.
-pip_services4_data provides data processing and persistence components.
+pip_services4_persistence provides data processing and persistence components.
 
 Links
 `````
 
 * `website <http://github.com/pip-services/pip-services>`_
-* `development version <http://github.com/pip-services3-python/pip-services4-data-python>`
+* `development version <http://github.com/pip-services3-python/pip-services4-persistence-python>`
 
 """
 
@@ -22,9 +22,9 @@ except:
     readme = __doc__
 
 setup(
-    name='pip_services4_data',
-    version='0.0.3',
-    url='http://github.com/pip-services3-python/pip-services4-data-python',
+    name='pip_services4_persistence',
+    version='0.0.2',
+    url='http://github.com/pip-services3-python/pip-services4-persistence-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',
@@ -36,7 +36,10 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'pip_services4_commons >= 0.0.1, < 1.0'
+        'pip_services4_commons >= 0.0.1, < 1.0',
+        'pip_services4_components >= 0.0.1, < 1.0',
+        'pip_services4_data >= 0.0.3, < 1.0',
+        'pip_services4_observability >= 0.0.1, < 1.0',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

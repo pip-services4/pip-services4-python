@@ -36,12 +36,6 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'pytz',
-        'bottle >= 0.12.19, < 0.13',
-        'requests >= 2.27.1, < 3.0',
-        'cheroot >= 8.6.0, < 9.0',
-        'beaker >= 1.11.0, < 2.0',
-        'psutil >= 5.9.0, < 6.0',
         'pip_services4_components >= 0.0.1, < 1.0',
         'pip_services4_observability >= 0.0.1, < 1.0',
         'pip_services4_data >= 0.0.1, < 1.0'

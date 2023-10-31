@@ -59,8 +59,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: |
-          script-delivery-ps
-          component*.json
+          pip-services4-aws-python/script-delivery-ps
+          pip-services4-aws-python/component*.json
         key: delivery-${{ github.run_id }}-${{ github.run_attempt }}
 
     - name: Execute build script

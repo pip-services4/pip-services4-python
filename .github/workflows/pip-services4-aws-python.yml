@@ -65,7 +65,7 @@ jobs:
 
     - name: Execute build script
       shell: bash
-      run: script-delivery-ps/authoring/build/build.ps1
+      run: pip-services4-aws-python/script-delivery-ps/authoring/build/build.ps1
       env:
         GIT_PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_KEY }}
 

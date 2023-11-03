@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_azure',
     version='0.0.1',
-    url='http://github.com/pip-services3-python/pip-services4-azure-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-azure-python',
     license='MIT',
     description='',
     author='Conceptual Vision Consulting LLC',

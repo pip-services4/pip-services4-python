@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_commons',
     version='0.0.1',
-    url='https://github.com/pip-services4/pip-services4-python/pip-services4-commons-python',
+    url='https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-commons-python',
     license='MIT',
     description='Basic portable abstractions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

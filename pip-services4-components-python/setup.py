@@ -9,7 +9,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services/pip-services>`
-* `development version <https://github.com/pip-services4/pip-services4-python/pip-services4-components-python>`
+* `development version <https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-components-python>`
 
 """
 
@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_components',
     version='0.0.8',
-    url='https://github.com/pip-services4/pip-services4-python/pip-services4-components-python',
+    url='https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

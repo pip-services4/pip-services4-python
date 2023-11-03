@@ -9,7 +9,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services/pip-services>`_
-* `development version <http://github.com/pip-services3-python/pip-services4-container-python>`
+* `development version <http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-container-python>`
 
 """
 
@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_container',
     version='0.0.1',
-    url='http://github.com/pip-services3-python/pip-services4-container-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-container-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',

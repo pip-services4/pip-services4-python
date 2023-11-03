@@ -9,7 +9,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services/pip-services>`
-* `development version <https://github.com/pip-services4/pip-services4-python/pip-services4-observability-python>`
+* `development version <https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-observability-python>`
 
 """
 
@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_observability',
     version='0.0.4',
-    url='https://github.com/pip-services4/pip-services4-python/pip-services4-observability-python',
+    url='https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-observability-python',
     license='MIT',
     description='Observability components for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

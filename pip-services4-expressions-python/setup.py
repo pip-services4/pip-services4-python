@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_expressions',
     version='0.0.3',
-    url='http://github.com/pip-services3-python/pip-services3-expressions-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services3-expressions-python',
     license='MIT',
     description='Basic portable abstractions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

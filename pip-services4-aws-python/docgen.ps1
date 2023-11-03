@@ -15,7 +15,7 @@ if (Test-Path "$PSScriptRoot/docs") {
 }
 
 # Build docker image
-docker build --build-arg COMPONENT_NAME="$($component.name)" -f docker/Dockerfile.docs -t $docsImage .
+docker build --build-arg PACKAGE_NAME="$($packageName)" -f "$PSScriptRoot/docker/Dockerfile.docs" -t $docsImage $PSScriptRoot
 
 # Create and copy compiled files, then destroy
 docker create --name $container $docsImage

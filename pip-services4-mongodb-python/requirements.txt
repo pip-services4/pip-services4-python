@@ -1,0 +1,7 @@
+pytest
+pymongo >= 4.0.1, < 5.0.0
+
+pip_services4_commons >= 0.0.1, < 1.0
+pip_services4_components >= 0.0.1, < 1.0
+pip_services4_data >= 0.0.1, < 1.0
+pip_services4_persistence >= 0.0.1, < 1.0

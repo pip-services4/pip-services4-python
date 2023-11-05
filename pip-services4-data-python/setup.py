@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services4_data',
-    version='0.0.3',
+    version='0.0.4',
     url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-data-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',

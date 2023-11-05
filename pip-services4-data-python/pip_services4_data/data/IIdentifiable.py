@@ -10,10 +10,11 @@
 """
 
 from abc import ABC
-from typing import Any
+from typing import Any, TypeVar, Generic
 
+T = TypeVar('T')
 
-class IIdentifiable(ABC):
+class IIdentifiable(Generic[T]):
     """
     Generic interface for data objects that can be uniquely identified by an id.
 
@@ -27,4 +28,4 @@ class IIdentifiable(ABC):
             id = None
 
     """
-    id: Any
+    id: T

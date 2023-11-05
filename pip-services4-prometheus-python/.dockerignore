@@ -1,0 +1,13 @@
+/.vscode
+/.git
+/.gitignore
+/.dockerignore
+/docs
+/pip_services4_prometheus.egg-info
+/dist
+/venv
+/docker/Dockerfile*
+/docker/docker-compose*.yml
+/*.sh
+/*.ps1
+/.github

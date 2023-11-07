@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services4_observability',
-    version='0.0.4',
+    version='0.0.5',
     url='https://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-observability-python',
     license='MIT',
     description='Observability components for Pip.Services in Python',

@@ -23,7 +23,7 @@ class LogMessage:
     Data object to store captured log messages. This object is used by :class:`CachedLogger <pip_services4_observability.log.CachedLogger.CachedLogger>`.
     """
 
-    def __init__(self, level: LogLevel = None, source: str = None, context: Optional[IContext] = None,
+    def __init__(self, level: LogLevel = None, source: str = None, trace_id: Optional[str] = None,
                  error: ErrorDescription = None, message: str = None):
         """
         Creates log message
@@ -32,7 +32,7 @@ class LogMessage:
 
         :param source: the source (context name)
 
-        :param context: (optional) transaction id to trace execution through call chain.
+        :param trace_id: (optional) transaction id to trace execution through call chain.
 
         :param error: an error object associated with this message.
 
@@ -45,7 +45,7 @@ class LogMessage:
         # The source (context name)
         self.source: str = source
         # The transaction id to trace execution through call chain.
-        self.context: Optional[IContext] = context
+        self.context: Optional[str] = trace_id
         # The description of the captured error
         self.error: ErrorDescription = error
         # The human-readable message

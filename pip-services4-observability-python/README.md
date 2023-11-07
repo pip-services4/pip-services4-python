@@ -29,12 +29,6 @@ Here we are going to use CompositeLogger and CompositeCounters components.
 They will pass through calls to loggers and counters that are set in references.
 
 ```python
-from pip_services3_commons.config import ConfigParams, IConfigurable
-from pip_services3_commons.refer import IReferences, IReferenceable
-from pip_services3_components.count import CompositeCounters
-from pip_services3_components.log import CompositeLogger
-
-
 class MyComponent(IConfigurable, IReferenceable):
     __logger = CompositeLogger()
     __counters = CompositeCounters()

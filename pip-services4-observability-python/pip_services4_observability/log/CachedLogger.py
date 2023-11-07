@@ -16,6 +16,7 @@ from typing import List, Optional
 
 from pip_services4_commons.errors import ErrorDescriptionFactory
 from pip_services4_components.config import IReconfigurable, ConfigParams
+from pip_services4_components.context import ContextResolver
 from pip_services4_components.context.IContext import IContext
 
 from pip_services4_observability.log import LogLevel
@@ -67,7 +68,7 @@ class CachedLogger(Logger, IReconfigurable):
         """
         error = ErrorDescriptionFactory.create(ex) if not (ex is None) else None
         source = self._source  # socket.gethostname()
-        log_message = LogMessage(level, source, context, error, message)
+        log_message = LogMessage(level, source, ContextResolver.get_trace_id(context), error, message)
 
         with self.__lock:
             self._cache.append(log_message)

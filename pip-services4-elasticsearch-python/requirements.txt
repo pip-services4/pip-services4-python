@@ -1,0 +1,13 @@
+pytest
+moment
+elasticsearch >= 7.17.2, < 8.0.0
+
+pip-services4-commons >= 0.0.1, < 1.0
+pip-services4-components >= 0.0.1, < 1.0
+pip-services4-rpc >= 0.0.1, < 1.0
+pip-services4-config >= 0.0.1, < 1.0
+pip-services4-data >= 0.0.1, < 1.0
+pip-services4-rpc >= 0.0.1, < 1.0
+pip-services4-http >= 0.0.1, < 1.0
+pip-services4-observability >= 0.0.5, < 1.0
+pip_services4_container >= 0.0.1, < 1.0

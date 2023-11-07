@@ -1,0 +1,14 @@
+{
+    "name":  "pip-services4-elasticsearch",
+    "type": "module",
+    "language": "python",
+    "version": "3.1.6",
+    "build": 0,
+    "registry": "pipservices",
+    "artifacts": [
+        {
+            "name":  "<name>",
+            "type": "pypi"
+        }
+    ]
+}

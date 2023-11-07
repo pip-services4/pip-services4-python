@@ -41,7 +41,7 @@ setup(
         'pip-services4-components >= 0.0.1, < 1.0',
         'pip-services4-messaging >= 0.0.1, < 1.0',
         'pip-services4-observability >= 0.0.1, < 1.0',
-        'pip-services4-data >= 0.0.1, < 1.0'
+        'pip-services4-data >= 0.0.1, < 1.0',
         'pip-services4-config >= 0.0.1, < 1.0'
     ],
     classifiers=[

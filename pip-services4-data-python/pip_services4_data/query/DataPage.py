@@ -8,10 +8,11 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from typing import List, Any
+from typing import List, Any, TypeVar, Generic
 
+T = TypeVar('T')  # Declare type variable
 
-class DataPage:
+class DataPage(Generic[T]):
     """
     Data transfer object that is used to pass results of paginated queries.
     It contains items of retrieved page and optional total number of items.
@@ -37,7 +38,7 @@ class DataPage:
             print (item)
     """
 
-    def __init__(self, data: List[Any] = (), total: int = None):
+    def __init__(self, data: List[T] = (), total: int = None):
         """
         Creates a new instance of data page and assigns its values.
 
@@ -46,7 +47,7 @@ class DataPage:
         :param total: total amount of items in a request.
         """
         # The total amount of items in a request.
-        self.data: List[Any] = data
+        self.data: List[T] = data
         # The total amount of items in a request.
         self.total: int = total
 

@@ -264,19 +264,19 @@ class GrpcEndpoint(IOpenable, IConfigurable, IReferenceable):
             registration.register()
 
             # hack for register generated controllers
-            if hasattr(registration, '_GrpcService__register_service') and hasattr(registration,
+            if hasattr(registration, '_GrpcController__register_controller') and hasattr(registration,
                                                                                    'add_servicer_to_server'):
-                registration._GrpcService__register_service(registration)
+                registration._GrpcController__register_controller(registration)
 
-        self.__register_commandable_service()
+        self.__register_commandable_controller()
 
-    def __register_commandable_service(self):
+    def __register_commandable_controller(self):
         if self.__commandable_methods is None:
             return
         self.__commandable_service = _CommandableMediator()
         self.__commandable_service.invoke_func(self.__invoke_commandable_method)
 
-        self.register_service(self.__commandable_service)
+        self.register_controller(self.__commandable_service)
 
     def __invoke_commandable_method(self, request: commandable_pb2.InvokeRequest, context: grpc.ServicerContext):
         method = request.method
@@ -305,11 +305,11 @@ class GrpcEndpoint(IOpenable, IConfigurable, IReferenceable):
 
         return action(request, context)
 
-    def register_service(self, service: Any):
+    def register_controller(self, service: Any):
         """
-        Registers a service with related implementation
+        Registers a controller with related implementation
 
-        :param service: a GRPC service object.
+        :param service: a GRPC controller object.
         """
         service.add_servicer_to_server(self.__server)
 

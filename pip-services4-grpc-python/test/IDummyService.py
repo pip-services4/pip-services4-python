@@ -9,7 +9,7 @@ from pip_services4_data.query import FilterParams, PagingParams, DataPage
 from test.Dummy import Dummy
 
 
-class IDummyController(ABC):
+class IDummyService(ABC):
     def get_page_by_filter(self, context: Optional[IContext], filter: FilterParams, paging: PagingParams) -> DataPage:
         pass
 

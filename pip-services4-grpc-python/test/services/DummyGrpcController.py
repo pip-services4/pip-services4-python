@@ -10,12 +10,12 @@ from pip_services4_data.validate import ObjectSchema, PagingParamsSchema, Filter
 from pip_services4_grpc.protos.commandable_pb2 import InvokeRequest
 from pip_services4_grpc.controllers.GrpcController import GrpcController
 from ..DummySchema import DummySchema
-from ..IDummyController import IDummyController
+from ..IDummyService import IDummyService
 from ..protos import dummies_pb2_grpc
 
 
 class DummyGrpcController(GrpcController, dummies_pb2_grpc.DummiesServicer):
-    __service: IDummyController = None
+    __service: IDummyService = None
     __number_of_calls: int = 0
 
     def add_servicer_to_server(self, server):

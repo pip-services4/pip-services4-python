@@ -10,7 +10,7 @@ class DefaultGrpcFactory(Factory):
     """
     Creates GRPC components by their descriptors.
 
-    See :class:`Factory <pip_services4_components.build.Factory.Factory>`, :class:`GrpcEndpoint <pip_services4_grpc.controllers.GrpcEndpoint.GrpcEndpoint>`, :class:`HeartbeatGrpcService <pip_services4_grpc.controllers.HeartbeatGrpcService.HeartbeatGrpcService>`, :class:`StatusGrpcService <pip_services4_grpc.controllers.StatusGrpcService.StatusGrpcService>`
+    See :class:`Factory <pip_services4_components.build.Factory.Factory>`, :class:`GrpcEndpoint <pip_services4_grpc.controllers.GrpcEndpoint.GrpcEndpoint>`, :class:`HeartbeatGrpcController <pip_services4_grpc.controllers.HeartbeatGrpcController.HeartbeatGrpcController>`, :class:`StatusGrpcController <pip_services4_grpc.controllers.StatusGrpcController.StatusGrpcController>`
     """
     GrpcEndpointDescriptor = Descriptor("pip-controllers", "endpoint", "grpc", "*", "1.0")
 

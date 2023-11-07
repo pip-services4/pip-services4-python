@@ -151,12 +151,12 @@ class CommandableGrpcController(GrpcController, ABC):
 
     def register(self):
         """
-        Registers all service routes in gRPC endpoint.
+        Registers all controller routes in gRPC endpoint.
         Call automaticaly in open component procedure
 
         """
-        controller = self._dependency_resolver.get_one_required('controller')
-        self.__command_set = controller.get_command_set()
+        service = self._dependency_resolver.get_one_required('service')
+        self.__command_set = service.get_command_set()
 
         commands: List[ICommand] = self.__command_set.get_commands()
 

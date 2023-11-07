@@ -4,7 +4,7 @@ from pip_services4_components.refer import References, Descriptor
 
 from .DummyClientFixture import DummyClientFixture
 from .DummyCommandableGrpcClient import DummyCommandableGrpcClient
-from ..DummyController import DummyController
+from ..DummyService import DummyService
 from ..services.DummyCommandableGrpcController import DummyCommandableGrpcController
 
 grpc_config = ConfigParams.from_tuples(
@@ -24,7 +24,7 @@ class TestDummyCommandableGrpcClient:
 
     @classmethod
     def setup_class(cls):
-        srv = DummyController()
+        srv = DummyService()
 
         cls.controller = DummyCommandableGrpcController()
         cls.controller.configure(grpc_config)

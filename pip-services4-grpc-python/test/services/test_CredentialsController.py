@@ -12,7 +12,7 @@ from ..protos import dummies_pb2
 from ..protos import dummies_pb2_grpc
 
 from ..Dummy import Dummy
-from ..DummyController import DummyController
+from ..DummyService import DummyService
 from .DummyGrpcController import DummyGrpcController
 from .DummyCommandableGrpcController import DummyCommandableGrpcController
 
@@ -46,7 +46,7 @@ class TestCredentialsDummyGrpcController:
 
     @classmethod
     def setup_class(cls):
-        cls.srv = DummyController()
+        cls.srv = DummyService()
 
         cls.controller = DummyGrpcController()
         cls.controller.configure(grpc_config)

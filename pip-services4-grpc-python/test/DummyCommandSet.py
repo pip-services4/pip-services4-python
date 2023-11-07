@@ -6,12 +6,12 @@ from pip_services4_rpc.commands import CommandSet, ICommand, Command
 
 from .Dummy import Dummy
 from .DummySchema import DummySchema
-from .IDummyController import IDummyController
+from .IDummyService import IDummyService
 
 
 class DummyCommandSet(CommandSet):
 
-    def __init__(self, service: IDummyController):
+    def __init__(self, service: IDummyService):
         super().__init__()
         self.__service = service
 

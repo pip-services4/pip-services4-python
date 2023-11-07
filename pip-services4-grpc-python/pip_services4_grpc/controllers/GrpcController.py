@@ -49,7 +49,7 @@ class GrpcController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
                 suoer().__init__('.. service name ...')
                 self._dependency_resolver.put(
                     "controller",
-                    Descriptor("mygroup","srvice","*","*","1.0")
+                    Descriptor("mygroup","service","*","*","1.0")
                 )
 
             def add_servicer_to_server(self, server):
@@ -57,7 +57,7 @@ class GrpcController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
 
             def set_references(self, references):
                 super().set_references(references)
-                self.__service = this._dependency_resolver.get_required("srvice")
+                self.__service = this._dependency_resolver.get_required("service")
 
             def __number_of_calls_interceptor(self, request: InvokeRequest, context: ServicerContext,
                                     next: Callable[[InvokeRequest, ServicerContext], Any]) -> Any:
@@ -67,30 +67,30 @@ class GrpcController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
             def __method(request: InvokeRequest, context: ServicerContext):
                 trace_id = request.trace_id
                 id = request.id
-                return self._controller.get_my_data(Context.from_trace_id(trace_id), id)
+                return self.__service.get_my_data(Context.from_trace_id(trace_id), id)
 
             def register(self):
 
                 self._register_interceptor(self.__number_of_calls_interceptor)
                 self._register_method("get_mydata", None, method)
                 
-                self._register_service(self)
+                self._register_controller(self)
                 ...
 
 
 
-        service = MyGrpcService()
-        service.configure(ConfigParams.from_tuples(
+        controller = MyGrpcController()
+        controller.configure(ConfigParams.from_tuples(
             "connection.protocol", "http",
             "connection.host", "localhost",
             "connection.port", 8080
         ))
 
-        service.set_references(References.from_tuples(
-           Descriptor("mygroup","controller","default","default","1.0"), controller
+        controller.set_references(References.from_tuples(
+           Descriptor("mygroup","service","default","default","1.0"), service
         ))
 
-        service.open(Context.from_trace_id("123"))
+        controller.open(Context.from_trace_id("123"))
 
     """
 
@@ -125,7 +125,7 @@ class GrpcController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
         self._tracer: CompositeTracer = CompositeTracer()
 
         self.__service_name: str = service_name
-        self.__registrable = lambda implementation: self.__register_service(implementation)
+        self.__registrable = lambda implementation: self.__register_controller(implementation)
 
     def configure(self, config: ConfigParams):
         """
@@ -269,11 +269,11 @@ class GrpcController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
 
         self.__opened = False
 
-    def __register_service(self, implementation: 'GrpcController'):
+    def __register_controller(self, implementation: 'GrpcController'):
         # self.register()
         implementation.__dict__.update(self.__implementation)
         if self._endpoint is not None:
-            self._endpoint.register_service(implementation)
+            self._endpoint.register_controller(implementation)
 
     def _apply_validation(self, schema: Schema, action: Callable[[InvokeRequest, ServicerContext], Any]) -> Callable[
         [InvokeRequest, ServicerContext], Any]:

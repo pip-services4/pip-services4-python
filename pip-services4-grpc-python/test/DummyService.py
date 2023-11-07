@@ -9,11 +9,11 @@ from pip_services4_rpc.commands import ICommandable, CommandSet
 
 from .Dummy import Dummy
 from .DummyCommandSet import DummyCommandSet
-from .IDummyController import IDummyController
+from .IDummyService import IDummyService
 from .protos import dummies_pb2
 
 
-class DummyController(IDummyController, ICommandable):
+class DummyService(IDummyService, ICommandable):
 
     def __init__(self):
         self._lock = threading.Lock()

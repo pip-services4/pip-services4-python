@@ -10,7 +10,7 @@ import pip_services4_grpc.protos.commandable_pb2 as commandable_pb2
 import pip_services4_grpc.protos.commandable_pb2_grpc as commandable_pb2_grpc
 from .DummyCommandableGrpcController import DummyCommandableGrpcController
 from ..Dummy import Dummy
-from ..DummyController import DummyController
+from ..DummyService import DummyService
 
 port = 3001
 grpc_config = ConfigParams.from_tuples(
@@ -35,7 +35,7 @@ class TestDummyCommandableGrpcController():
 
     @classmethod
     def setup_class(cls):
-        cls.srv = DummyController()
+        cls.srv = DummyService()
 
         cls.controller = DummyCommandableGrpcController()
         cls.controller.configure(grpc_config)

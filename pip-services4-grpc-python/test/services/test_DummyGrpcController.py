@@ -6,7 +6,7 @@ from pip_services4_components.refer import References, Descriptor
 
 from .DummyGrpcController import DummyGrpcController
 from ..Dummy import Dummy
-from ..DummyController import DummyController
+from ..DummyService import DummyService
 from ..protos import dummies_pb2
 from ..protos import dummies_pb2_grpc
 
@@ -33,7 +33,7 @@ class TestDummyGrpcController:
 
     @classmethod
     def setup_class(cls):
-        cls.srv = DummyController()
+        cls.srv = DummyService()
 
         cls.controller = DummyGrpcController()
         cls.controller.configure(grpc_config)

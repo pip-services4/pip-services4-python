@@ -87,7 +87,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
     """
     _default_config = ConfigParams.from_tuples("base_route", None,
                                                "dependencies.endpoint", "*:endpoint:http:*:1.0",
-                                               "dependencies.swagger", "*:swagger-service:*:*:1.0")
+                                               "dependencies.swagger", "*:swagger-controller:*:*:1.0")
 
     def __init__(self):
 

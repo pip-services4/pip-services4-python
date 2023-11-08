@@ -106,7 +106,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
         self._tracer: CompositeTracer = CompositeTracer()
 
         self._config: ConfigParams = None
-        self._swagger_service: ISwaggerController = None
+        self._swagger_controller: ISwaggerController = None
         self._swagger_enabled = False
         self._swagger_route = 'swagger'
 
@@ -134,7 +134,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
 
         self._endpoint.register(self)
 
-        self._swagger_service = self._dependency_resolver.get_one_optional('swagger')
+        self._swagger_controller = self._dependency_resolver.get_one_optional('swagger')
 
     def unset_references(self):
         """
@@ -144,7 +144,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
             self._endpoint.unregister(self)
             self._endpoint = None
 
-        self._swagger_service = None
+        self._swagger_controller = None
 
     def configure(self, config: ConfigParams):
         """
@@ -402,8 +402,8 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
         if self._swagger_enabled:
             self.register_route('GET', self._swagger_route, None, handler)
 
-            if self._swagger_service is not None:
-                self._swagger_service.register_open_api_spec(self._base_route, self._swagger_route)
+        if self._swagger_controller is not None:
+            self._swagger_controller.register_open_api_spec(self._base_route, self._swagger_route)
 
     def _get_trace_id(self) -> Optional[str]:
         """

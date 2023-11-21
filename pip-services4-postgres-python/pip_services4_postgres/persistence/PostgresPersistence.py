@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+
 import random
-from typing import Any, Optional, List, TypeVar
+from typing import List, Any, Optional, TypeVar
 
 from pip_services4_commons.convert import LongConverter
-from pip_services4_commons.errors import ConnectionException, InvalidStateException, ApplicationException
+from pip_services4_commons.errors import InvalidStateException, ConnectionException
 from pip_services4_commons.reflect import PropertyReflector
 from pip_services4_components.config import IConfigurable, ConfigParams
 from pip_services4_components.context import IContext, ContextResolver
@@ -12,14 +13,15 @@ from pip_services4_components.run import IOpenable, ICleanable
 from pip_services4_data.query import PagingParams, DataPage
 from pip_services4_observability.log import CompositeLogger
 
-from pip_services4_mysql.connect.MySqlConnection import MySqlConnection
+from pip_services4_postgres.connect.PostgresConnection import PostgresConnection
+from psycopg2 import ProgrammingError
 
 T = TypeVar('T')  # Declare type variable
 
 
-class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenable, ICleanable):
+class PostgresPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenable, ICleanable):
     """
-    Abstract persistence component that stores data in MySQL using plain driver.
+    Abstract persistence component that stores data in PostgreSQL using plain driver.
 
     This is the most basic persistence component that is only
     able to store data items of any type. Specific CRUD operations
@@ -27,8 +29,8 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
     accessing **self._db** or **self._collection** properties.
 
     ### Configuration parameters ###
-        - table:                  (optional) MySQL table name
-        - schema:                 (optional) MySQL schema name
+        - table:                      (optional) PostgreSQL table name
+        - schema:                     (optional) PostgreSQL schema name
         - connection(s):
             - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
             - host:                      host name or IP address
@@ -52,34 +54,38 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
     .. code-block:: python
 
-        class MyMySqlPersistence(MySqlPersistence):
+        class MyPostgresPersistence(PostgresPersistence):
+
             def __init__(self):
-                super(MyMySqlPersistence, self).__init__('mydata')
+                super(MyPostgresPersistence, self).__init__('mydata')
 
             def get_by_name(self, context, name):
-                criteria = {'name':name}
+                criteria = {'name': name}
                 return self._model.find_one(criteria)
 
-            def set(self,context, item):
+            def set(self, context, item):
                 criteria = {'name': item['name']}
-                options = {'upsert': True, 'new': True}
+                options = { 'upsert': True, 'new': True }
                 return self._model.find_one_and_update(criteria, item, options)
 
-        persistence =MyMySqlPersistence()
+        persistence = MyPostgresPersistence()
         persistence.configure(ConfigParams.from_tuples(
             "host", "localhost",
             "port", 27017
         ))
+
         persistence.open(context)
-        persistence.set(context, {'name':'ABC'})
-        item = persistence.get_by_name(context, 'ABC')
-        print(item) # Result: { name: "ABC" }
+        persistence.set(context, {'name': "ABC"})
+
+        item = persistence.get_by_name(context, "ABC")
+        print(item) # Result: { 'name': "ABC" }
+
     """
 
-    _default_config = ConfigParams.from_tuples(
+    __default_config = ConfigParams.from_tuples(
         "table", None,
         "schema", None,
-        "dependencies.connection", "*:connection:mysql:*:1.0",
+        "dependencies.connection", "*:connection:postgres:*:1.0",
 
         # connections.*
         # credential.*
@@ -99,30 +105,35 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :param table_name: (optional) a table name.
         :param schema_name: (optional) a schema name.
         """
+        # The PostgreSQL table object.
+        self._table_name = table_name
+
+        # The PostgreSQL schema object.
+        self._schema_name = schema_name
+
         self.__config: ConfigParams = None
         self.__references: IReferences = None
         self.__opened: bool = None
         self.__local_connection: bool = None
-
-        self.__schema_statements = []
+        self.__schema_statements: List[str] = []
 
         # The dependency resolver.
-        self._dependency_resolver: DependencyResolver = DependencyResolver(self._default_config)
+        self._dependency_resolver: DependencyResolver = DependencyResolver(PostgresPersistence.__default_config)
+
         # The logger.
         self._logger: CompositeLogger = CompositeLogger()
-        # The MySQL connection component.
-        self._connection: MySqlConnection = None
-        # The MySQL connection pool object.
-        self._client: Any = None
-        # The MySQL database name.
-        self._database_name: str = None
-        # The MySQL table object.
-        self._table_name: str = None
-        # Max number of objects in data pages
-        self._max_page_size: int = 100
 
-        self._table_name = table_name
-        self._schema_name = schema_name
+        # The PostgreSQL connection component.
+        self._connection: PostgresConnection = None
+
+        # The PostgreSQL connection pool object.
+        self._client: Any = None
+
+        # The PostgreSQL database name.
+        self._database_name: str = None
+
+        # Maximum number of objects in data pages
+        self._max_page_size = 100
 
     def configure(self, config: ConfigParams):
         """
@@ -130,15 +141,15 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
         :param config: configuration parameters to be set.
         """
-        config = config.set_defaults(MySqlPersistence._default_config)
+        config = config.set_defaults(PostgresPersistence.__default_config)
         self.__config = config
 
         self._dependency_resolver.configure(config)
 
+        self._max_page_size = config.get_as_integer_with_default("options.max_page_size", self._max_page_size)
+
         self._table_name = config.get_as_string_with_default('collection', self._table_name)
         self._table_name = config.get_as_string_with_default('table', self._table_name)
-        self._schema_name = config.get_as_string_with_default('schema', self._schema_name)
-        self._max_page_size = config.get_as_integer_with_default('options.max_page_size', self._max_page_size)
 
     def set_references(self, references: IReferences):
         """
@@ -153,7 +164,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         self._dependency_resolver.set_references(references)
         self._connection = self._dependency_resolver.get_one_optional('connection')
         # Or create a local one
-        if not self._connection:
+        if self._connection is None:
             self._connection = self.__create_connection()
             self.__local_connection = True
         else:
@@ -165,43 +176,61 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         """
         self._connection = None
 
-    def __create_connection(self) -> MySqlConnection:
-        connection = MySqlConnection()
+    def __create_connection(self) -> PostgresConnection:
+        connection = PostgresConnection()
 
         if self.__config:
             connection.configure(self.__config)
+
         if self.__references:
             connection.set_references(self.__references)
 
         return connection
 
     def _ensure_index(self, name: str, keys: Any, options: Any = None):
+        """
+        Adds index definition to create it on opening
+
+        :param keys: index keys (fields)
+        :param options: index options
+        """
         builder = 'CREATE'
+
         options = options or {}
 
         if options.get('unique'):
-            builder += ' UNIQUE'
+            builder += " UNIQUE"
 
         index_name = self._quote_identifier(name)
         if self._schema_name is not None:
             index_name = self._quote_identifier(self._schema_name) + '.' + index_name
 
-        builder += " INDEX " + index_name + " ON " + self._quoted_table_name()
+        builder += " INDEX IF NOT EXISTS " + index_name + " ON " + self._quoted_table_name()
+
         if options.get('type'):
             builder += " " + options['type']
 
         fields = ''
         for key in keys:
             if fields != '':
-                fields += ', '
-            fields += self._quote_identifier(key)
+                fields += ", "
+            fields += key
             asc = keys[key]
             if not asc:
-                fields += ' DESC'
+                fields += " DESC"
 
-        builder += '(' + fields + ')'
+        builder += " (" + fields + ")"
 
         self._ensure_schema(builder)
+
+    def _auto_create_objects(self, schema_statement: str):
+        """
+        Adds a statement to schema definition.
+        This is a deprecated method. Use ensureSchema instead.
+
+        :param schema_statement: a statement to be added to the schema
+        """
+        self._ensure_schema(schema_statement)
 
     def _ensure_schema(self, schema_statement: str):
         """
@@ -215,18 +244,22 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         """
         Clears all auto-created objects
         """
-        self.__schema_statements.clear()
+        self.__schema_statements = []
 
     def _define_schema(self):
-        # Todo: override in chile classes
-        self._clear_schema()
+        """
+        Defines database schema via auto create objects or convenience methods.
+        :return:
+        """
+        # Todo: override in child classes
+        pass
 
     def _convert_to_public(self, value: Any) -> Any:
         """
         Converts object value from internal to public format.
 
         :param value: an object in internal format to convert.
-        :return:  converted object in public format.
+        :return: converted object in public format.
         """
         if value is None:
             return
@@ -240,10 +273,10 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :param value: an object in public format to convert.
         :return: converted object in internal format.
         """
+
         if isinstance(value, dict):
             return value
         props = PropertyReflector.get_properties(value)
-
         # remove protected and private keys
         if isinstance(props, dict):
             keys = list(props.keys())
@@ -253,12 +286,21 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
         return props
 
-    def _quote_identifier(self, value: str) -> str:
+    def _quote_identifier(self, value: str) -> Optional[str]:
+        """
+        TODO add ddescription
+
+        :param value:
+        :return:
+        """
+
         if value is None or value == '':
-            return ''
-        if value[0] == '`':
             return value
-        return '`' + value + '`'
+
+        if value[0] == '"':
+            return value
+
+        return '"' + value + '"'
 
     def _quoted_table_name(self) -> Optional[str]:
         if self._table_name is None:
@@ -270,7 +312,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
         return builder
 
-    def is_open(self):
+    def is_open(self) -> bool:
         """
         Checks if the component is opened.
 
@@ -283,7 +325,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         Opens the component.
 
         :param context: (optional) transaction id to trace execution through call chain.
-        :return: raise error or null no errors occured.
+        :return: raise error or None no errors occured.
         """
         if self.__opened:
             return
@@ -295,27 +337,31 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         if self.__local_connection:
             self._connection.open(context)
 
+        if self._connection is None:
+            raise InvalidStateException(context, 'NO_CONNECTION', 'PostgreSQL connection is missing')
+
         if not self._connection.is_open():
             self.__opened = False
             raise ConnectionException(ContextResolver.get_trace_id(context), "CONNECT_FAILED",
-                                      "MySQL connection is not opened")
-        else:
-            self._client = self._connection.get_connection()
-            self._database_name = self._connection.get_database_name()
+                                      "PostgreSQL connection is not opened")
 
-            # Define database schema
-            self._define_schema()
+        self._client = self._connection.get_connection()
 
-            # Recreate objects
-            try:
-                self._create_schema(context)
-                self.__opened = True
-                self._logger.debug(context, "Connected to mysql database %s, collection %s",
-                                   self._database_name,
-                                   self._table_name)
-            except Exception as err:
-                raise ConnectionException(ContextResolver.get_trace_id(context), "CONNECT_FAILED",
-                                          "Connection to mysql failed").with_cause(err)
+        self._database_name = self._connection.get_database_name()
+
+        # Define database schema
+        self._define_schema()
+
+        # Recreate objects
+        try:
+            self._create_schema(context)
+            self.__opened = True
+            self._logger.debug(context,
+                               "Connected to postgres database %s, collection %s",
+                               self._database_name,
+                               self._table_name)
+        except Exception as err:
+            raise ConnectionException(context, "CONNECT_FAILED", "Connection to postgres failed").with_cause(err)
 
     def close(self, context: Optional[IContext]):
         """
@@ -329,13 +375,33 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
         if self._connection is None:
             raise InvalidStateException(ContextResolver.get_trace_id(context), 'NO_CONNECTION',
-                                        'MySql connection is missing')
+                                        'Postgres connection is missing')
 
         if self.__local_connection:
             self._connection.close(context)
 
-        self.__opened = False
-        self._client = None
+            self.__opened = False
+            self._client = None
+        else:
+            self.__opened = False
+            self._client = None
+
+    # def _request(self, query, params=None):
+    #
+    #     conn = self._client.getconn()
+    #     cursor = conn.cursor()
+    #
+    #     if params:
+    #         cursor.execute(query, params)
+    #     else:
+    #         cursor.execute(query)
+    #
+    #     response = cursor.fetchall()
+    #
+    #     conn.commit()
+    #     cursor.close()
+    #     self._client.putconn(conn)
+    #     return response, cursor
 
     def _request(self, query: str, params: List[str] = None) -> dict:
         """
@@ -347,26 +413,36 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         """
         result = {'rowcount': None,
                   'items': [],
-                  'column_names': None,
-                  'statement': None
+                  'statusmessage': None
                   }
 
-        conn = self._client.get_connection()
-        cursor = conn.cursor()
+        with self._client.getconn() as conn:
+            with conn.cursor() as cursor:
+                try:
+                    if params:
+                        cursor.execute(query, params)
+                    else:
+                        cursor.execute(query)
 
-        for response in cursor.execute(query, params=params, multi=True):
-            response = response.fetchall()
-            for val in response:
-                result['items'].append(dict(zip(cursor.column_names, val)))
+                    try:
+                        response = cursor.fetchall()
+                        column_names = [column.name for column in cursor.description]
+                        for obj in response:
+                            result['items'].append(dict(zip(column_names, obj)))
+                    except ProgrammingError:
+                        pass
 
-        # affected rows
-        result.update({'rowcount': cursor.rowcount,
-                       'column_names': cursor.column_names,
-                       'statement': cursor.statement})
+                    try:
+                        result['rowcount'] = int(cursor.statusmessage.split(' ')[-1])
+                    except ValueError:
+                        result['rowcount'] = cursor.rowcount
+                    # affected rows
+                    result['statusmessage'] = cursor.statusmessage
 
-        conn.commit()
-        cursor.close()
-        conn.close()
+                    conn.commit()
+                finally:
+                    self._client.putconn(conn)
+
         return result
 
     def clear(self, context: Optional[IContext]):
@@ -379,28 +455,40 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
         # Return error if collection is not set
         if self._table_name is None:
-            raise ApplicationException(ContextResolver.get_trace_id(context), message='Table name is not defined')
+            raise Exception('Table name is not defined')
 
         query = "DELETE FROM " + self._quoted_table_name()
 
         try:
-            self._request(query)
+            # self._request(query)
+            with self._client.getconn() as conn:
+                with conn.cursor() as cursor:
+                    cursor.execute(query)
+                    conn.commit()
+                    cursor.close()
+                    self._client.putconn(conn)
+
         except Exception as err:
-            ConnectionException(ContextResolver.get_trace_id(context), "CONNECT_FAILED",
-                                "Connection to mysql failed").with_cause(err)
+            raise ConnectionException(ContextResolver.get_trace_id(context), "CONNECT_FAILED",
+                                      "Connection to postgres failed").with_cause(err)
 
     def _create_schema(self, context: Optional[IContext]):
-        if not self.__schema_statements or len(self.__schema_statements) == 0:
-            return
+        """
+        TODO add description
+        :param context:
+        :return:
+        """
+        if self.__schema_statements is None or len(self.__schema_statements) == 0:
+            return None
 
         # Check if table exist to determine weither to auto create objects
-        # Todo: include schema
-        query = "SHOW TABLES LIKE '" + self._table_name + "'"
+        # Todo: Add support for schema
+        query = "SELECT to_regclass('" + self._table_name + "')"
 
         result = self._request(query)
 
         # If table already exists then exit
-        if result['items'] and len(result['items']) > 0:
+        if result['items'] and len(result['items']) > 0 and result['items'][0]['to_regclass'] is not None:
             return
 
         self._logger.debug(context,
@@ -420,11 +508,6 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :param values: an array with column values or a key-value map
         :return: a generated list of column names
         """
-        # values = [val for val in values.__dict__ if
-        #           not val.startswith('_') and
-        #           not callable(getattr(values, val))] \
-        #     if not isinstance(values, dict) else values.keys()
-
         values = values.keys()
 
         result = ''
@@ -437,7 +520,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
     def _generate_parameters(self, values: Any) -> str:
         """
-        Generates a list of value parameters to use in SQL statements like: "$1,$2,$3"
+        Generates a list of value parameters to use in SQL statements like: "%s,%s,%s"
 
         :param values: an array with values or a key-value map
         :return: a generated list of value parameters
@@ -445,7 +528,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         values = values if not isinstance(values, dict) else values.keys()
 
         result = ''
-        for val in values:
+        for _ in values:
             if result != '':
                 result += ','
             result += '%s'  # "$" + index;
@@ -454,7 +537,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
 
     def _generate_set_parameters(self, values: Any) -> str:
         """
-        Generates a list of column sets to use in UPDATE statements like: column1=$1,column2=$2
+        Generates a list of column sets to use in UPDATE statements like: column1=%s,column2=%s
 
         :param values: a key-value map with columns and values
         :return: a generated list of column sets
@@ -470,6 +553,12 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         return result
 
     def _generate_values(self, values: Any) -> List[Any]:
+        """
+        Generates a list of column parameters
+
+        :param values: a key-value map with columns and values
+        :return: a generated list of column values
+        """
         return list(values.values())
 
     def get_page_by_filter(self, context: Optional[IContext], filter: Any, paging: PagingParams,
@@ -484,13 +573,14 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :param paging: (optional) paging parameters
         :param sort: (optional) sorting JSON object
         :param select: (optional) projection JSON object
-        :return: a data page or raise error
+        :return: a data page or error
         """
         select = select if select and len(select) > 0 else '*'
         query = "SELECT " + select + " FROM " + self._quoted_table_name()
 
         # Adjust max item count based on configuration
         paging = paging or PagingParams()
+
         skip = paging.get_skip(-1)
         take = paging.get_take(self._max_page_size)
         paging_enabled = paging.total
@@ -501,10 +591,10 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         if sort:
             query += " ORDER BY " + sort
 
-        query += " LIMIT " + str(take)
-
         if skip >= 0:
             query += " OFFSET " + str(skip)
+
+        query += " LIMIT " + str(take)
 
         result = self._request(query)
         items = result['items']
@@ -518,8 +608,10 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
             query = 'SELECT COUNT(*) AS count FROM ' + self._quoted_table_name()
             if filter is not None and filter != '':
                 query += " WHERE " + filter
+
             result = self._request(query)
-            count = LongConverter.to_long(len(result['items'][0])) if result and len(result['items']) == 1 else 0
+
+            count = LongConverter.to_long(0 if len(result['items']) == 0 else result['items'][0].get('count', 0))
 
             return DataPage(items, count)
         else:
@@ -541,9 +633,11 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
             query += " WHERE " + filter
 
         result = self._request(query)
-        count = LongConverter.to_long(len(result['items'][0])) if result and len(result['items']) == 1 else 0
 
-        if count:
+        count = LongConverter.to_long(result['items'][0]['count']) if result['items'] and len(
+            result['items']) == 1 else 0
+
+        if count is not None:
             self._logger.trace(context, "Counted %d items in %s", count, self._table_name)
 
         return count
@@ -551,6 +645,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
     def get_list_by_filter(self, context: Optional[IContext], filter: Any, sort: Any, select: Any) -> List[T]:
         """
         Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
+
         This method shall be called by a public getListByFilter method from child class that
         receives FilterParams and converts them into a filter function.
 
@@ -558,11 +653,12 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :param filter: (optional) a filter JSON object
         :param sort: (optional) sorting JSON object
         :param select: (optional) projection JSON object
-        :return: a data list
+        :return: data list
         """
 
         select = select if select and len(select) > 0 else '*'
         query = "SELECT " + select + " FROM " + self._quoted_table_name()
+
         if filter and filter != '':
             query += " WHERE " + filter
 
@@ -572,7 +668,7 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         result = self._request(query)
         items = result['items']
 
-        if items:
+        if items is not None:
             self._logger.trace(context, "Retrieved %d from %s", len(items), self._table_name)
 
         items = list(map(self._convert_to_public, items))
@@ -590,7 +686,6 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         :return: a random item
         """
         query = 'SELECT COUNT(*) AS count FROM ' + self._quoted_table_name()
-
         if filter and filter != '':
             query += " WHERE " + filter
 
@@ -601,21 +696,25 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         if filter and filter != '':
             query += " WHERE " + filter
 
-        count = result['items'][0].get('count') if result['items'] and len(result['items']) == 1 else 0
+        count = 0 if len(result['items']) == 0 else result['items'][0].get('count', 0)
         count = 0 if count == 0 else count - 1
 
         pos = random.randint(0, count)
-        query += f" LIMIT 1 OFFSET {pos}"
+        query += f" OFFSET {pos} LIMIT 1"
 
         result = self._request(query)
-        item = result['items'][0] if result['items'] is not None and len(result['items']) > 0 else None
 
-        if item:
+        items = result['items']
+        item = items[0] if items is not None and len(items) > 0 else None
+
+        if item is None:
             self._logger.trace(context, "Random item wasn't found from %s", self._table_name)
         else:
             self._logger.trace(context, "Retrieved random item from %s", self._table_name)
 
-        return self._convert_to_public(item)
+        item = self._convert_to_public(item)
+
+        return item
 
     def create(self, context: Optional[IContext], item: T) -> Optional[T]:
         """
@@ -627,26 +726,28 @@ class MySqlPersistence(IReferenceable, IUnreferenceable, IConfigurable, IOpenabl
         """
         if not item:
             return
+
         row = self._convert_from_public(item)
         columns = self._generate_columns(row)
         params = self._generate_parameters(row)
         values = self._generate_values(row)
 
-        query = "INSERT INTO " + self._quoted_table_name() + " (" + columns + ") VALUES (" + params + ")"
-        # query += "; SELECT * FROM " + self._quoted_table_name()
-        self._request(query, values)
+        query = "INSERT INTO " + self._quoted_table_name() + " (" + columns + ") VALUES (" + params + ") RETURNING *"
 
-        self._logger.trace(context, "Created in %s with id = %s", self._quoted_table_name(),
-                           item.id)
-        # new_item = self._convert_to_public(result['items'][0]) if result['items'] and len(result['items']) == 1 else None
+        result = self._request(query, values)
+        self._logger.trace(context, "Created in %s with id = %s", self._table_name, row['id'])
 
-        new_item = item
+        new_item = self._convert_to_public(result['items'][0]) if result['items'] and result['items'][0] and len(
+            result['items']) == 1 else None
 
         return new_item
 
     def delete_by_filter(self, context: Optional[IContext], filter: Any):
         """
         Deletes data items that match to a given filter.
+
+        This method shall be called by a public delete_by_filter method from child class that receives FilterParams
+        and converts them into a filter function.
 
         :param context: (optional) transaction id to trace execution through call chain.
         :param filter: (optional) a filter JSON object.

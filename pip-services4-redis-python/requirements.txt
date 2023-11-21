@@ -4,5 +4,5 @@ redis
 pip_services4_commons >= 0.0.1, < 1.0
 pip_services4-components >= 0.0.1, < 1.0
 pip_services4_config >= 0.0.1, < 1.0
-pip_services4_observability >= 0.0.1, < 1.0
-pip_services4_persistence >= 0.0.1, < 1.0
+pip_services4_data >= 0.0.1, < 1.0
+pip_services4_logic >= 0.0.1, < 1.0

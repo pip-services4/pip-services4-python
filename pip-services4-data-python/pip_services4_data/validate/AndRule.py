@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.AndRule
+    pip_services4_commons.validate.AndRule
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     And rule implementation

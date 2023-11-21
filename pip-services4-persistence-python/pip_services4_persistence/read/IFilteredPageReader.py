@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IFilteredPageReader
+    pip_services4_data.IFilteredPageReader
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for filtered paging data readers.

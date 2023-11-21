@@ -17,7 +17,7 @@ from ..containers.AzureFunctionContextHelper import AzureFunctionContextHelper
 class CommandableAzureFunctionController(AzureFunctionController):
     """
     Abstract service that receives commands via Azure Function protocol
-    to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>` components.
+    to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>` components.
     Each command is exposed as invoke method that receives command name and parameters.
 
     Commandable controllers require only 3 lines of code to implement a robust external
@@ -31,8 +31,8 @@ class CommandableAzureFunctionController(AzureFunctionController):
             - controller:            override for Controller dependency
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>`  components to pass log messages
-        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>`  components to pass collected measurements
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>`  components to pass log messages
+        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>`  components to pass collected measurements
 
     See: :class:`AzureFunctionController <pip_services4_azure.controllers.AzureFunctionController.AzureFunctionController>`
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IWriter
+    pip_services4_data.IWriter
     ~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for data writers.

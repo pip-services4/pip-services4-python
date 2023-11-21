@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.persistence.JsonFilePersister
+    pip_services4_data.persistence.JsonFilePersister
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     JSON file persister implementation
@@ -27,7 +27,7 @@ class JsonFilePersister(ILoader, ISaver, IConfigurable):
     """
     Persistence component that loads and saves data from/to flat file.
 
-    It is used by :class:`FilePersistence <pip_services3_data.persistence.FilePersistence.FilePersistence>`, but can be useful on its own.
+    It is used by :class:`FilePersistence <pip_services4_data.persistence.FilePersistence.FilePersistence>`, but can be useful on its own.
 
     ### Configuration parameters ###
         - path:          path to the file where data is stored

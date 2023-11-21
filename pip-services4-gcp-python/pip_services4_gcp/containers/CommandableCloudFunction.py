@@ -19,7 +19,7 @@ class CommandableCloudFunction(CloudFunction):
     """
     Abstract Google Function function, that acts as a container to instantiate and run components
     and expose them via external entry point. All actions are automatically generated for commands
-    defined in :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>` components.
+    defined in :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>` components.
     Each command is exposed as an action defined by "cmd" parameter.
 
     Container configuration for this Google Function is stored in `"./config/config.yml"` file.
@@ -28,8 +28,8 @@ class CommandableCloudFunction(CloudFunction):
     Note: This component has been deprecated. Use CloudFunctionController instead.
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`        (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`        (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
         - `*:service:cloudfunc:*:1.0`      (optional) :class:`ICounters <pip_services4_gcp.controller.iCloudFunctionservice.iCloudFunctionservice>` controller to handle action requests
         - `*:service:commandable-cloudfunc:*:1.0` (optional) :class:`ICounters <pip_services4_gcp.controller.iCloudFunctionservice.iCloudFunctionservice>` controller to handle action requests
 

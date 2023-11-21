@@ -213,7 +213,7 @@ class AnyValue(ICloneable):
 
         :return: double value or None if conversion is not supported.
 
-        See: :class:`DoubleConverter <pip_services3_components.convert.DoubleConverter.DoubleConverter>`
+        See: :class:`DoubleConverter <pip_services4_components.convert.DoubleConverter.DoubleConverter>`
         """
         return DoubleConverter.to_double(self.value)
 
@@ -225,7 +225,7 @@ class AnyValue(ICloneable):
 
         :return: double value or default if conversion is not supported.
 
-        See: :class:`DoubleConverter <pip_services3_components.convert.DoubleConverter.DoubleConverter>`
+        See: :class:`DoubleConverter <pip_services4_components.convert.DoubleConverter.DoubleConverter>`
         """
         return DoubleConverter.to_double_with_default(self.value, default_value)
 

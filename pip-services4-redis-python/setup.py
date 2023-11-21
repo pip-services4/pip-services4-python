@@ -9,7 +9,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services-python/>`_
-* `development version <http://github.com/pip-services4-python/pip-services4-redis-python>`
+* `development version <http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--redis-python>`
 
 """
 
@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_redis',
     version='0.0.1',
-    url='http://github.com/pip-services4-python/pip-services4-redis-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--redis-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',

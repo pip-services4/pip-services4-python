@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IGetter
+    pip_services4_data.IGetter
     ~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for data getters.

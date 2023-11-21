@@ -29,8 +29,8 @@ class AzureConnectionResolver(IConfigurable, IReferenceable):
     ### References ###
         - *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
 
-    See :class:`ConnectionParams <pip_services4_components.connect.ConnectionParams.ConnectionParams>` (in the Pip.Services components package),
-    :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` (in the Pip.Services components package)
+    See :class:`ConnectionParams <pip_services4_config.connect.ConnectionParams.ConnectionParams>` (in the Pip.Services components package),
+    :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` (in the Pip.Services components package)
 
     .. code-block:: python
 

@@ -15,12 +15,12 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [Configuration](https://www.pipservices.org/recipies/configuration)
-* [Protocol buffer](https://github.com/pip-services3-node/pip-services4-grpc-node/blob/master/src/protos/commandable.proto)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-grpc-python/index.html)
+* [Configuration](http://docs.pipservices.org/v4/tutorials/beginner_tutorials/configuration/)
+* [Protocol buffer](https://github.com/pip-services4-node/pip-services4-grpc-node/blob/master/src/protos/commandable.proto)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-grpc-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 
 ## Use

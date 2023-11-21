@@ -10,7 +10,7 @@ from .LambdaController import LambdaController
 class CommandableLambdaController(LambdaController, ABC):
     """
         Abstract controller that receives commands via AWS Lambda protocol
-        to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>` components.
+        to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>` components.
         Each command is exposed as invoke method that receives command name and parameters.
 
         Commandable controllers require only 3 lines of code to implement a robust external
@@ -24,8 +24,8 @@ class CommandableLambdaController(LambdaController, ABC):
                 - service:            override for Service dependency
 
         ### References ###
-            - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-            - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
+            - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+            - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
 
         Example:
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.ILoader
+    pip_services4_data.ILoader
     ~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for data loaders.

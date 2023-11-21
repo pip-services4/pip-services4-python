@@ -8,7 +8,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services-python/>`_
-* `development version <http://github.com/pip-services4-python/pip-services4-kafka-python>`
+* `development version <http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--kafka-python>`
 
 """
 
@@ -23,7 +23,7 @@ except:
 setup(
     name='pip_services4_kafka',
     version='0.0.1',
-    url='http://github.com/pip-services4-python/pip-services4-kafka-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--kafka-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',

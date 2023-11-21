@@ -35,7 +35,7 @@ class ContainerConfig(list):
     def from_value(value: Any) -> 'ContainerConfig':
         """
         Creates a new :class:`ContainerConfig <pip_services4_container.config.ContainerConfig.ContainerConfig>` object filled with key-value pairs from specified object.
-        The value is converted into :class:`ConfigParams <pip_services4_commons.config.ConfigParams.ConfigParams>` object which is used to create the object.
+        The value is converted into :class:`ConfigParams <pip_services4_components.config.ConfigParams.ConfigParams>` object which is used to create the object.
 
         :param value: an object with key-value pairs used to initialize a new :class:`ContainerConfig <pip_services4_container.config.ContainerConfig.ContainerConfig>`.
 

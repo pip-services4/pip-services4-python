@@ -10,7 +10,7 @@ class DefaultPrometheusFactory(Factory):
     """
     Creates Prometheus components by their descriptors.
 
-    See :class:`Factory <pip_services3_components.build.Factory.Factory>`,
+    See :class:`Factory <pip_services4_components.build.Factory.Factory>`,
     :class:`PrometheusCounters <pip_services4_prometheus.count.PrometheusCounters.PrometheusCounters>`,
     :class:`PrometheusMetricsController <pip_services4_prometheus.controllers.PrometheusMetricsController.PrometheusMetricsController>`
     """

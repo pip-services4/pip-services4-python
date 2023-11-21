@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.persistence.FilePersistence
+    pip_services4_data.persistence.FilePersistence
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     File persistence implementation.

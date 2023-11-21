@@ -17,7 +17,7 @@ class IReferenceable(ABC):
     """
     Interface for components that depends on obj components.
     If component requires explicit notification to unset references
-    it shall additionally implement :class:`IUnreferenceable <pip_services4_commons.refer.IUnreferenceable.IUnreferenceable>` interface.
+    it shall additionally implement :class:`IUnreferenceable <pip_services4_compoents.refer.IUnreferenceable.IUnreferenceable>` interface.
 
     Example:
 

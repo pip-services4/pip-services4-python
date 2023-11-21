@@ -1,6 +1,6 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Portable Core Abstractions for Python
 
-This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
+This module is a part of the [Pip.Services](https://www.pipservices.org/) polyglot microservices toolkit.
 It provides a set of basic patterns used in microservices or backend services.
 Also the module implemenets a reasonably thin abstraction layer over most fundamental functions across
 all languages supported by the toolkit to facilitate symmetric implementation.
@@ -17,7 +17,7 @@ The module contains the following packages:
 * [Locator Pattern](http://docs.pipservices.org/toolkit/recipes/component_references/)
 * [Component Lifecycle](http://docs.pipservices.org/toolkit/building_blocks/components/)
 * [Data Patterns](http://docs.pipservices.org/toolkit/recipes/memory_persistence/)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-commons-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-commons-python/index.html)
 * [Change Log](CHANGELOG.md)
 * [Get Help](http://docs.pipservices.org/get_help/)
 * [Contribute](http://docs.pipservices.org/contribute/)

@@ -11,9 +11,9 @@ class DefaultSwaggerFactory(Factory):
     Creates Swagger components by their descriptors.
 
     See :class:`Factory <pip_services4_components.build.Factory.Factory>`
-    :class:`HttpEndpoint <pip_services4_rpc.controllers.HttpEndpoint.HttpEndpoint>`
-    :class:`HeartbeatRestService <pip_services4_rpc.controllers.HeartbeatRestService.HeartbeatRestService>`
-    :class:`StatusRestService <pip_services4_rpc.controllers.StatusRestService.StatusRestService>`
+    :class:`HttpEndpoint <pip_services4_http.controllers.HttpEndpoint.HttpEndpoint>`
+    :class:`HeartbeatRestController <pip_services4_http.controllers.HeartbeatRestController.HeartbeatRestController>`
+    :class:`StatusRestController <pip_services4_http.controllers.StatusRestController.StatusRestController>`
     """
     descriptor = Descriptor("pip-services", "factory", "swagger", "default", "1.0")
     swagger_service_descriptor = Descriptor("pip-services", "swagger-controller", "*", "*", "1.0")

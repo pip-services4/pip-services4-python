@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.data.INamed
+    pip_services4_commons.data.INamed
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for named data objects

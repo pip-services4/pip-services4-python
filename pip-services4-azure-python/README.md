@@ -1,6 +1,6 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Azure specific components for Python
 
-This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
+This module is a part of the [Pip.Services](https://www.pipservices.org/) polyglot microservices toolkit.
 
 Contains packages used to create containers and services that do operations via the Azure cloud.
 
@@ -13,7 +13,7 @@ The module contains the following packages:
 <a name="links"></a> Quick links:
 
 * [Configuration Pattern](http://docs.pipservices.org/toolkit/getting_started/configurations/) 
-* [API Reference](https://pip-services3-python.github.io/pip-services4-azure-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-azure-python/index.html)
 * [Change Log](CHANGELOG.md)
 * [Get Help](http://docs.pipservices.org/get_help/)
 * [Contribute](http://docs.pipservices.org/toolkit/contribute/)

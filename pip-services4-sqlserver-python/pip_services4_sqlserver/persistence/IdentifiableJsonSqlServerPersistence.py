@@ -14,7 +14,7 @@ class IdentifiableJsonSqlServerPersistence(IdentifiableSqlServerPersistence):
     """
     Abstract persistence component that stores data in SqlServer in JSON or JSONB fields
     and implements a number of CRUD operations over data items with unique ids.
-    The data items must implement :class:`IIdentifiable <pip_services4_commons.data.IIdentifiable.IIdentifiable>` interface.
+    The data items must implement :class:`IIdentifiable <pip_services4_data.data.IIdentifiable.IIdentifiable>` interface.
 
     The JSON table has only two fields: id and data.
 
@@ -30,12 +30,12 @@ class IdentifiableJsonSqlServerPersistence(IdentifiableSqlServerPersistence):
         - table:                       (optional) SQLServer table name
         - schema:                       (optional) SQLServer table name
         - connection(s):
-            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - host:                      host name or IP address
             - port:                      port number (default: 27017)
             - uri:                       resource URI or connection string with all parameters in it
         - credential(s):
-            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>`
+            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
             - username:                  (optional) user name
             - password:                  (optional) user password
         - options:
@@ -44,9 +44,9 @@ class IdentifiableJsonSqlServerPersistence(IdentifiableSqlServerPersistence):
             - max_pool_size:        (optional) maximum number of clients the pool should contain (default: 10)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages components to pass log messages
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services
-        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages components to pass log messages
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services
+        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
 
     Example:
 

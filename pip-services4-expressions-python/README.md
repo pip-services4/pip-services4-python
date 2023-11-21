@@ -1,6 +1,6 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Tokenizers, parsers and expression calculators in Python
 
-This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
+This module is a part of the [Pip.Services](https://www.pipservices.org/) polyglot microservices toolkit.
 It provides syntax and lexical analyzers and expression calculator optimized for repeated calculations.
 
 The module contains the following packages:
@@ -13,7 +13,7 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [API Reference](https://pip-services3-python.github.io/pip-services3-expressions-python/)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-expressions-python/)
 * [Change Log](CHANGELOG.md)
 * [Get Help](http://docs.pipservices.org/get_help/)
 * [Contribute](http://docs.pipservices.org/contribute/)
@@ -22,7 +22,7 @@ The module contains the following packages:
 
 Install the Python package as
 ```bash
-pip install pip-services3-expressions
+pip install pip-services4-expressions
 ```
 
 The example below shows how to use expression calculator to dynamically

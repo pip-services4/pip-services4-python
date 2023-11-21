@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.persistence.MemoryPersistence
+    pip_services4_data.persistence.MemoryPersistence
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Memory persistence implementation
@@ -198,7 +198,7 @@ class MemoryPersistence(IConfigurable, IReferenceable, IOpenable, ICleanable):
         Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
 
         This method shall be called by a public :func:`get_page_by_filter` method from child class that
-        receives :class:`FilterParams <pip_services3_commons.data.FilterParams.FilterParams>` and converts them into a filter function.
+        receives :class:`FilterParams <pip_services4_data.query.FilterParams.FilterParams>` and converts them into a filter function.
 
         :param context: (optional) transaction id to trace execution through call chain.
 
@@ -249,7 +249,7 @@ class MemoryPersistence(IConfigurable, IReferenceable, IOpenable, ICleanable):
         Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
         This method shall be called by a public :func:`get_list_by_filter` method from child class that
-        receives :class:`FilterParams <pip_services3_commons.data.FilterParams.FilterParams>` and converts them into a filter function.
+        receives :class:`FilterParams <pip_services4_data.query.FilterParams.FilterParams>` and converts them into a filter function.
 
         :param context: (optional) transaction id to trace execution through call chain.
 
@@ -306,7 +306,7 @@ class MemoryPersistence(IConfigurable, IReferenceable, IOpenable, ICleanable):
         Gets a random item from items that match to a given filter.
 
         This method shall be called by a public :func:`get_one_random` method from child class
-        that receives :class:`FilterParams <pip_services3_commons.data.FilterParams.FilterParams>` and converts them into a filter function.
+        that receives :class:`FilterParams <pip_services4_data.query.FilterParams.FilterParams>` and converts them into a filter function.
 
         :param context: (optional) transaction id to trace execution through call chain.
         :param filter: (optional) a filter function to filter items.
@@ -338,7 +338,7 @@ class MemoryPersistence(IConfigurable, IReferenceable, IOpenable, ICleanable):
         Deletes data items that match to a given filter.
 
         This method shall be called by a public :func:`delete_by_filter` method from child class that
-        receives :class:`FilterParams <pip_services3_commons.data.FilterParams.FilterParams>` and converts them into a filter function.
+        receives :class:`FilterParams <pip_services4_data.query.FilterParams.FilterParams>` and converts them into a filter function.
 
         :param context: (optional) transaction id to trace execution through call chain.
 

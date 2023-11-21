@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from pip_services3_commons.refer import Descriptor
-from pip_services3_components.build import Factory
+from pip_services4_commons.refer import Descriptor
+from pip_services4_components.build import Factory
 
 from pip_services4_datadog.count.DataDogCounters import DataDogCounters
 from pip_services4_datadog.log.DataDogLogger import DataDogLogger

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.ISaver
+    pip_services4_data.ISaver
     ~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for data saver.

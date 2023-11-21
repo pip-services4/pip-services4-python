@@ -20,7 +20,7 @@ class MemcachedLock(Lock, IConfigurable, IReferenceable, IOpenable):
     ### Configuration parameters ###
 
         - connection(s):
-            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - host:                  host name or IP address
             - port:                  port number
             - uri:                   resource URI or connection string with all parameters in it
@@ -40,7 +40,7 @@ class MemcachedLock(Lock, IConfigurable, IReferenceable, IOpenable):
 
     ### References ###
 
-        - `*:discovery:*:*:1.0`      (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:discovery:*:*:1.0`      (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
 
     Example:
 

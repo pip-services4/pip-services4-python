@@ -19,10 +19,10 @@ class CommandableLambdaFunction(LambdaFunction, ABC):
     Note: This component has been deprecated. Use LambdaService instead.
 
     ### References ###
-        - `*:logger:*:*:1.0`                   (optional) :class:`ContextInfo <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`                 (optional) :class:`ContextInfo <pip_services3_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:service:lambda:*:1.0`              (optional) :class:`ILambdaController <pip_services4_aws.controllers.ILambdaService.ILambdaController>` controllers to handle action requests
-        - `*:service:commandable-lambda:*:1.0`  (optional) :class:`ILambdaController <pip_services4_aws.controllers.ILambdaService.ILambdaController>` controllers to handle action requests
+        - `*:logger:*:*:1.0`                   (optional) :class:`ContextInfo <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`                 (optional) :class:`ContextInfo <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:controller:lambda:*:1.0`              (optional) :class:`ILambdaController <pip_services4_aws.controllers.ILambdaController.ILambdaController>` controllers to handle action requests
+        - `*:controller:commandable-lambda:*:1.0`  (optional) :class:`ILambdaController <pip_services4_aws.controllers.ILambdaController.ILambdaController>` controllers to handle action requests
 
     See :class:`ILambdaService <pip_services4_aws.clients.LambdaClient.LambdaClient>`
 

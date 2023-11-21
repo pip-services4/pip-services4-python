@@ -50,10 +50,10 @@ class MessageQueue(IConfigurable, IReferenceable, IMessageQueue):
         - access_key:                application secret key
 
     ### References ###
-        - `*:logger:*:*:1.0`              (optional) :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`            (optional) :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`           (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` components to discover connection(s)
-        - `*:credential-store:*:*:1.0`    (optional) :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` componetns to lookup credential(s)
+        - `*:logger:*:*:1.0`              (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`            (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`           (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` components to discover connection(s)
+        - `*:credential-store:*:*:1.0`    (optional) :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>` componetns to lookup credential(s)
     """
 
     def __init__(self, name: str = None, capabilities: MessagingCapabilities = None):

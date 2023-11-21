@@ -32,7 +32,7 @@ class ElasticSearchLogger(CachedLogger, IReferenceable, IOpenable):
         - level:             maximum log level to capture
         - source:            source (context) name
         - connection(s):
-            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - protocol:              connection protocol: http or https
             - host:                  host name or IP address
             - port:                  port number
@@ -50,8 +50,8 @@ class ElasticSearchLogger(CachedLogger, IReferenceable, IOpenable):
             - include_type_name: Will create using a "typed" index compatible with ElasticSearch 6.x (default: false)
 
     ### References ###
-        - `*:context-info:*:*:1.0`    (optional) :class:`ContextInfo <pip_services4_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
-        - `*:discovery:*:*:1.0`       (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:context-info:*:*:1.0`    (optional) :class:`ContextInfo <pip_services4_components.context.ContextInfo.ContextInfo>` to detect the context id and specify counters source
+        - `*:discovery:*:*:1.0`       (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
 
     Example:
 

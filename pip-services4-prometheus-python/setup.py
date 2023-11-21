@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_prometheus',
     version='0.0.1',
-    url='http://github.com/pip-services3-python/pip-services4-prometheus-python',
+    url='http://github.com/pip-services4-python/pip-services4-prometheus-python',
     license='MIT',
     description='Prometheus components for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

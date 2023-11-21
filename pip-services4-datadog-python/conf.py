@@ -65,6 +65,6 @@ html_static_path = ['_static']
 # Looks for objects in external projects
 intersphinx_mapping = {'python': ('http://docs.python.org/2', None),
                        'scipy': ('http://docs.scipy.org/doc/scipy/reference/', None),
-                       'pip_services3_commons': ('https://pip-services3-python.github.io/pip-services3-commons-python/index.html', None),
-                       'pip_services3_components': ('https://pip-services3-python.github.io/pip-services3-components-python/index.html', None),
-                        'pip_services3_rpc': ('https://pip-services3-python.github.io/pip-services3-rpc-python/index.html', None)}
+                       'pip_services4_commons': ('https://pip-services4-python.github.io/pip-services4-commons-python/index.html', None),
+                       'pip_services4_components': ('https://pip-services4-python.github.io/pip-services4-components-python/index.html', None),
+                        'pip_services4_rpc': ('https://pip-services4-python.github.io/pip-services4-rpc-python/index.html', None)}

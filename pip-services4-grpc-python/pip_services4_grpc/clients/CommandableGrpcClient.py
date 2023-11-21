@@ -16,12 +16,12 @@ class CommandableGrpcClient(GrpcClient):
     """
     Abstract client that calls commandable GRPC service.
 
-    Commandable controllers are generated automatically for :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>`.
+    Commandable controllers are generated automatically for :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>`.
     Each command is exposed as Invoke method that receives all parameters as args.
 
     ### Configuration parameters ###
         - connection(s):
-          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
           - protocol:              connection protocol: http or https
           - host:                  host name or IP address
           - port:                  port number
@@ -32,9 +32,9 @@ class CommandableGrpcClient(GrpcClient):
           - timeout:               invocation timeout in milliseconds (default: 10 sec)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
 
     .. code-block:: python
 

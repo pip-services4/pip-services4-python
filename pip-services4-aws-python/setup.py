@@ -24,7 +24,7 @@ except:
 setup(
     name='pip_services4_aws',
     version='0.0.1',
-    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services3-c-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4-c-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',

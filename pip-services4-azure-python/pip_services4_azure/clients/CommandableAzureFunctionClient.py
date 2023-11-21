@@ -11,7 +11,7 @@ class CommandableAzureFunctionClient(AzureFunctionClient):
     Abstract client that calls commandable Azure Functions.
 
     Commandable controllers are generated automatically for
-    :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>` objects.
+    :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>` objects.
     Each command is exposed as action determined by "cmd" parameter.
 
     ### Configuration parameters ###
@@ -24,9 +24,9 @@ class CommandableAzureFunctionClient(AzureFunctionClient):
             - auth_code:                   Azure Function auth code if use custom authorization provide empty string
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>`  components to pass log messages
-        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>`  components to pass collected measurements
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>`  components to pass log messages
+        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>`  components to pass collected measurements
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
         - `*:credential-store:*:*:1.0`   (optional) Credential stores to resolve credentials
 
     .. code-block:: python

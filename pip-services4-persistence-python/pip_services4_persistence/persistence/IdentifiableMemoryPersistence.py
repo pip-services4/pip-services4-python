@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.persistence.IdentifiableMemoryPersistence
+    pip_services4_data.persistence.IdentifiableMemoryPersistence
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Identifiable memory persistence implementation

@@ -25,7 +25,7 @@ class DataDogCounters(CachedCounters, IReferenceable, IOpenable):
 
     ### Configuration parameters ###
         - connection(s):
-          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - protocol:            (optional) connection protocol: http or https (default: https)
             - host:                (optional) host name or IP address (default: api.datadoghq.com)
             - port:                (optional) port number (default: 443)
@@ -38,12 +38,12 @@ class DataDogCounters(CachedCounters, IReferenceable, IOpenable):
           - timeout:               invocation timeout in milliseconds (default: 10 sec)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
 
-    See: :class:`RestService <pip_services4_controller.controllers.RestController.RestController>`,
-    :class:`CommandableHttpController <pip_services4_rpc.controllers.CommandableHttpController.CommandableHttpController>`
+    See: :class:`RestController <pip_services4_http.controllers.RestController.RestController>`,
+    :class:`CommandableHttpController <pip_services4_http.controllers.CommandableHttpController.CommandableHttpController>`
 
     Example:
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services4_http.controller.RestService
+    pip_services4_http.controller.RestController
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     REST service implementation
@@ -42,7 +42,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
             - endpoint:              override for HTTP Endpoint dependency
             - controller:            override for Controller dependency
         - connection(s):
-            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - protocol:              connection protocol: http or https
             - host:                  host name or IP address
             - port:                  port number
@@ -53,17 +53,17 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
             - ssl_ca_file:          the certificate authorities (root cerfiticates) in PEM
 
     ### References ###
-        - `*:logger:*:*:1.0`         (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`       (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`      (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` controller to resolve connection
+        - `*:logger:*:*:1.0`         (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`       (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`      (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controller to resolve connection
         - `*:endpoint:http:*:1.0`    (optional) :class:`HttpEndpoint <pip_services4_http.controller.HttpEndpoint>` reference
-        - `*:tracer:*:*:1.0`         (optional) :class:`ITracer <pip_services4_components.trace.ITracer.ITracer>` components to record traces
+        - `*:tracer:*:*:1.0`         (optional) :class:`ITracer <pip_services4_observability.trace.ITracer.ITracer>` components to record traces
 
     Example:
 
     .. code-block:: python
 
-        class RestController(RestService):
+        class RestController(RestController):
             _controller = None
             # ...
 

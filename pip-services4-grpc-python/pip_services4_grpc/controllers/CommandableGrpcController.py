@@ -18,7 +18,7 @@ from .GrpcController import GrpcController
 class CommandableGrpcController(GrpcController, ABC):
     """
     Abstract service that receives commands via GRPC protocol
-    to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>`.
+    to operations automatically generated for commands defined in :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>`.
     Each command is exposed as invoke method that receives command name and parameters.
 
     Commandable controllers require only 3 lines of code to implement a robust external
@@ -29,16 +29,16 @@ class CommandableGrpcController(GrpcController, ABC):
         - endpoint:              override for HTTP Endpoint dependency
         - service:            override for Service dependency
     - connection(s):
-        - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+        - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
         - protocol:              connection protocol: http or https
         - host:                  host name or IP address
         - port:                  port number
         - uri:                   resource URI or connection string with all parameters in it
 
         ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
         - `*:endpoint:grpc:*:1.0`      (optional) :class:`GrpcEndpoint <pip_services4_grpc.controllers.GrpcEndpoint.GrpcEndpoint` reference
 
     See :class:`CommandableGrpcClient <pip_services4_grpc.clients.CommandableGrpcClient.CommandableGrpcClient`,

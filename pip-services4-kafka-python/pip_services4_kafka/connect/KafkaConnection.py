@@ -34,12 +34,12 @@ class KafkaConnection(IMessageQueueConnection, IReferenceable, IConfigurable, IO
     ### Configuration parameters ###
         - client_id:               (optional) name of the client id
         - connection(s):
-            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - host:                      host name or IP address
             - port:                      port number (default: 27017)
             - uri:                       resource URI or connection string with all parameters in it
         - credential(s):
-            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>`
+            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
             - username:                  user name
             - password:                  user password
         - options:
@@ -54,8 +54,8 @@ class KafkaConnection(IMessageQueueConnection, IReferenceable, IConfigurable, IO
             - request_timeout:      (optional) number of milliseconds to wait on flushing messages (default: 30000)
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
         - `*:credential-store:*:*:1.0`  (optional) Credential stores to resolve credentials
     """
 

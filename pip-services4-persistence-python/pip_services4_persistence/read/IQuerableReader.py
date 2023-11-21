@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IQuerableReader
+    pip_services4_data.IQuerableReader
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for querable data readers.

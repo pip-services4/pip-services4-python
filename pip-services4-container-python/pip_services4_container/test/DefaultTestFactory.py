@@ -11,7 +11,7 @@ class DefaultTestFactory(Factory):
     Creates test components by their descriptors.
 
     See :class:`Factory <pip_services4_components.build.Factory.Factory>`,
-    :class:`Shutdown <pip_services4_components.test.Shutdown.Shutdown>`
+    :class:`Shutdown <pip_services4_container.test.Shutdown.Shutdown>`
     """
     ShutdownDescriptor = Descriptor("pip-services", "shutdown", "*", "*", "1.0")
 

@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'pip-services3-expressions'
+project = 'pip-services4-expressions'
 copyright = '2020, Sergey Seroukhov'
 author = 'Sergey Seroukhov'
 
@@ -65,6 +65,6 @@ html_static_path = ['_static']
 # Looks for objects in external projects
 intersphinx_mapping = {'python': ('http://docs.python.org/3/', 'https://docs.python.org/3/objects.inv'),
 
-                       'pip_services4_commons': ('https://pip-services3-python.github.io/pip-services3-commons-python/',
-                                                    'https://pip-services3-python.github.io/pip-services3-commons-python/objects.inv')
+                       'pip_services4_commons': ('https://pip-services4-python.github.io/pip-services4-commons-python/',
+                                                    'https://pip-services4-python.github.io/pip-services4-commons-python/objects.inv')
                       }

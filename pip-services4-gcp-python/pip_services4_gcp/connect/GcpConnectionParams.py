@@ -28,7 +28,7 @@ class GcpConnectionParams(ConfigParams):
             - account: the service account name
             - auth_token:    Google-generated ID token or None if using custom auth (IAM)
 
-    In addition to standard parameters :class:`CredentialParams <pip_services4_components.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
+    In addition to standard parameters :class:`CredentialParams <pip_services4_config.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
 
     See: :class:`GcpConnectionResolver <pip_services4_gcp.connect.GcpConnectionResolver.GcpConnectionResolver>`
 

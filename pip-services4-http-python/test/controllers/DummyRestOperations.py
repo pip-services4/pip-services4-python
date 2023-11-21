@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    test.rest.DummyRestService
+    test.rest.DummyRestController
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Dummy REST service

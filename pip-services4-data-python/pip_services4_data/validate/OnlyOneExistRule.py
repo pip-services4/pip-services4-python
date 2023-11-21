@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.OnlyOneExistRule
+    pip_services4_commons.validate.OnlyOneExistRule
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Only one exist rule implementation

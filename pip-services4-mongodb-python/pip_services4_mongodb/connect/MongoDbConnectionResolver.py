@@ -39,8 +39,8 @@ class MongoDbConnectionResolver(IReferenceable, IConfigurable):
             - password:                    user password
 
     ### References ###
-        - `*:discovery:*:*:1.0`             (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` services
-        - `*:credential-store:*:*:1.0`      (optional) :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
+        - `*:discovery:*:*:1.0`             (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services
+        - `*:credential-store:*:*:1.0`      (optional) :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
     """
 
     def __init__(self):

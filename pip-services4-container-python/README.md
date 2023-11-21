@@ -19,10 +19,10 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [API Reference](https://pip-services3-python.github.io/pip-services4-container-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-container-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 
@@ -50,7 +50,7 @@ modules if you plan to include external components into your container.
 
 ```python
 from pip_services4_container import ProcessContainer
-from pip_services3_rpc.build import DefaultRpcFactory
+from pip_services4_rpc.build import DefaultRpcFactory
 
 
 class MyProcess(ProcessContainer):

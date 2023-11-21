@@ -152,7 +152,7 @@ class DependencyResolver(IReconfigurable, IReferenceable):
     def get_required(self, name: str) -> List[Any]:
         """
         Gets all __required dependencies by their name.
-        At least one dependency must be present. If no dependencies was found it throws a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>`
+        At least one dependency must be present. If no dependencies was found it throws a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>`
 
         :param name: the dependency name to locate.
 
@@ -178,7 +178,7 @@ class DependencyResolver(IReconfigurable, IReferenceable):
     def get_one_required(self, name: str) -> Any:
         """
         Gets one __required dependency by its name.
-        At least one dependency must present. If the dependency was found it throws a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>`
+        At least one dependency must present. If the dependency was found it throws a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>`
 
         :param name: the dependency name to locate.
 

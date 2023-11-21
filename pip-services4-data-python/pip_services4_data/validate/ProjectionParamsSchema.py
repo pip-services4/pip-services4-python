@@ -5,7 +5,7 @@ from ..validate.ArraySchema import ArraySchema
 
 class ProjectionParamsSchema(ArraySchema):
     """
-    Schema to validate :class:`ProjectionParams <pip_services3_commons.data.ProjectionParams.ProjectionParams>`
+    Schema to validate :class:`ProjectionParams <pip_services4_data.query.ProjectionParams.ProjectionParams>`
     """
     def __init__(self):
         """

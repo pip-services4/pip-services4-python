@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IPartialUpdater
+    pip_services4_data.IPartialUpdater
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for partial data updaters.

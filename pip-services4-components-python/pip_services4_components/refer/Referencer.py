@@ -58,7 +58,7 @@ class Referencer:
         """
         Unsets references in specific component.
 
-        To unset references components must implement :class:`IUnreferenceable <pip_services4_commons.refer.IUnreferenceable.IUnreferenceable>` interface.
+        To unset references components must implement :class:`IUnreferenceable <pip_services4_compoents.refer.IUnreferenceable.IUnreferenceable>` interface.
         If they don't the call to this method has no effect.
 
         :param component: the component to unset references.
@@ -71,7 +71,7 @@ class Referencer:
         """
         Unsets references in multiple components.
 
-        To unset references components must implement :class:`IUnreferenceable <pip_services4_commons.refer.IUnreferenceable.IUnreferenceable>` interface.
+        To unset references components must implement :class:`IUnreferenceable <pip_services4_compoents.refer.IUnreferenceable.IUnreferenceable>` interface.
         If they don't the call to this method has no effect.
 
         :param components: the list of components, whose references must be cleared.

@@ -35,10 +35,10 @@ class AzureFunction(Container):
     But this path can be overriden by `CONFIG_PATH` environment variable.
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>`  components to pass log messages
-        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>`  components to pass collected measurements
-        - `*:ervice:azurefunc:*:*:1.0`        (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
-        - `*:service:commandable-azurefunc:*:*:1.0`   (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>`  components to pass log messages
+        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>`  components to pass collected measurements
+        - `*:controller:azurefunc:*:*:1.0`        (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
+        - `*:controller:commandable-azurefunc:*:*:1.0`   (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
 
     Example:
 
@@ -50,7 +50,7 @@ class AzureFunction(Container):
 
         azure_function = MyAzureFunctionFunction()
 
-        service.run()
+        azure_function.run()
         print("MyAzureFunctionFunction is started")
 
     """

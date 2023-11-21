@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.data.IdGenerator
+    pip_services4_commons.data.IdGenerator
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     ID generator implementation.

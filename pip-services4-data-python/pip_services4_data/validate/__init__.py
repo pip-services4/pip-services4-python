@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.__init__
+    pip_services4_commons.validate.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Validation frameworks exist in various languages, but since this is one of the underlying

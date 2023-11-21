@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.PagingParamsSchema
+    pip_services4_commons.validate.PagingParamsSchema
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     PagingParams schema implementation
@@ -15,7 +15,7 @@ from .ObjectSchema import ObjectSchema
 
 class PagingParamsSchema(ObjectSchema):
     """
-    Schema to validate :class:`PagingParams <pip_services3_commons.data.PagingParams.PagingParams>`.
+    Schema to validate :class:`PagingParams <pip_services4_data.query.PagingParams.PagingParams>`.
     """
 
     def __init__(self):

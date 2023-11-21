@@ -11,11 +11,11 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [Logging](https://www.pipservices.org/recipies/logging)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-observability-python/index.html)
+* [Logging](http://docs.pipservices.org/v4/tutorials/beginner_tutorials/observability/logging/)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-observability-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 

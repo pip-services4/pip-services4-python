@@ -31,12 +31,12 @@ class KafkaMessageQueue(MessageQueue, IKafkaMessageListener, IUnreferenceable, I
         - read_partitions:               (optional) number of partitions to be consumed concurrently (default: 1)
         - autocommit:                    (optional) turns on/off autocommit (default: true)
         - connection(s):
-          - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+          - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
           - host:                        host name or IP address
           - port:                        port number
           - uri:                         resource URI or connection string with all parameters in it
         - credential(s):
-          - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>`
+          - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
           - username:                    user name
           - password:                    user password
         - options:
@@ -53,9 +53,9 @@ class KafkaMessageQueue(MessageQueue, IKafkaMessageListener, IUnreferenceable, I
           - request_timeout:      (optional) number of milliseconds to wait on flushing messages (default: 30000)
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`          (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
         - `*:credential-store:*:*:1.0`  (optional) Credential stores to resolve credentials
         - `*:connection:kafka:*:1.0`    (optional) Shared connection to Kafka service
 

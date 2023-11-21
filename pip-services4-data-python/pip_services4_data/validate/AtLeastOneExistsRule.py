@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.AtLeastOneExistsRule
+    pip_services4_commons.validate.AtLeastOneExistsRule
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     At least one exist rule implementation

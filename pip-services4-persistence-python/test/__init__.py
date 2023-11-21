@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.__init__
+    pip_services4_data.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Data module initialization

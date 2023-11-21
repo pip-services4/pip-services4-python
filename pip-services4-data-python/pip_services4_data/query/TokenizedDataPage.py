@@ -10,7 +10,7 @@ class TokenizedDataPage:
 
     Most often this object type is used to send responses to paginated queries.
     Pagination parameters are defined by
-    :class:`TokenizedPagingParams <pip_services3_commons.data.TokenizedPagingParams.TokenizedPagingParams>` object.
+    :class:`TokenizedPagingParams <pip_services4_data.query.TokenizedPagingParams.TokenizedPagingParams>` object.
     The `token` parameter in the TokenizedPagingParams there means where to start the searxh.
     The `takes` parameter sets number of items to return in the page.
     And the optional `total` parameter tells to return total number of items in the query.
@@ -20,7 +20,7 @@ class TokenizedDataPage:
     Remember: not all implementations support the `total` parameter
     because its generation may lead to severe performance implications.
 
-    See :class:`PagingParams <pip_services3_commons.data.PagingParams.PagingParams>`
+    See :class:`PagingParams <pip_services4_data.query.PagingParams.PagingParams>`
 
      Example:
 

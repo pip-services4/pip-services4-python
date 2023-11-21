@@ -19,7 +19,7 @@ class IReferences(ABC):
     Interface for a map that holds component references and passes them to components
     to establish dependencies with each obj.
 
-    Together with :class:`IReferenceable <pip_services4_commons.refer.IReferenceable.IReferenceable>` and :class:`IUnreferenceable <pip_services4_commons.refer.IUnreferenceable.IUnreferenceable>` interfaces it implements
+    Together with :class:`IReferenceable <pip_services4_commons.refer.IReferenceable.IReferenceable>` and :class:`IUnreferenceable <pip_services4_compoents.refer.IUnreferenceable.IUnreferenceable>` interfaces it implements
     a Locator pattern that is used by PipServices toolkit for Inversion of Control
     to assign external dependencies to components.
 
@@ -114,7 +114,7 @@ class IReferences(ABC):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when no references found.
         """
         raise NotImplementedError('Method from interface definition')
 
@@ -136,7 +136,7 @@ class IReferences(ABC):
 
         :return: a matching component reference.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when no references found.
         """
         raise NotImplementedError('Method from interface definition')
 
@@ -153,6 +153,6 @@ class IReferences(ABC):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when __required is set to true but no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when __required is set to true but no references found.
         """
         raise NotImplementedError('Method from interface definition')

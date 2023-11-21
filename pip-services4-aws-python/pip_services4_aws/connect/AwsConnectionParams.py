@@ -23,7 +23,7 @@ class AwsConnectionParams(ConfigParams):
         - client_key:    alternative to access_key
         - secret_key:    alternative to access_key
 
-    In addition to standard parameters :class:`CredentialParams <pip_services3_components.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
+    In addition to standard parameters :class:`CredentialParams <pip_services4_config.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
 
     Example:
 

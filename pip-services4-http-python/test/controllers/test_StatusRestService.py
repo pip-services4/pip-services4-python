@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    test_DummyRestService
+    test_DummyRestController
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Dummy commandable HTTP service test

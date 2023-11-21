@@ -16,7 +16,7 @@ class IdentifiableSqlServerPersistence(SqlServerPersistence):
     """
     Abstract persistence component that stores data in SqlServer
     and implements a number of CRUD operations over data items with unique ids.
-    The data items must implement :class:`IIdentifiable <pip_services4_commons.data.IIdentifiable.IIdentifiable>` interface.
+    The data items must implement :class:`IIdentifiable <pip_services4_data.data.IIdentifiable.IIdentifiable>` interface.
 
     In basic scenarios child classes shall only override :func:`get_page_by_filter <pip_services4_sqlserver.persistence.IdentifiableSqlServerPersistence.get_page_by_filter>`,
     :func:`get_list_by_filter <pip_services4_sqlserver.persistence.IdentifiableSqlServerPersistence.get_list_by_filter>` or :func:`delete_by_filter <pip_services4_sqlserver.persistence.IdentifiableSqlServerPersistence.delete_by_filter>`
@@ -30,12 +30,12 @@ class IdentifiableSqlServerPersistence(SqlServerPersistence):
         - table:                       (optional) SQLServer table name
         - schema:                       (optional) SQLServer table name
         - connection(s):
-            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - host:                      host name or IP address
             - port:                      port number (default: 27017)
             - uri:                       resource URI or connection string with all parameters in it
         - credential(s):
-            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>`
+            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
             - username:                  (optional) user name
             - password:                  (optional) user password
         - options:
@@ -44,9 +44,9 @@ class IdentifiableSqlServerPersistence(SqlServerPersistence):
             - max_pool_size:        (optional) maximum number of clients the pool should contain (default: 10)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages components to pass log messages
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services
-        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages components to pass log messages
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services
+        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
 
     Example:
 

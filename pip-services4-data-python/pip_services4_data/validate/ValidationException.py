@@ -20,7 +20,7 @@ class ValidationException(BadRequestException):
     """
     Errors in schema validation.
 
-    Validation errors are usually generated based in :class:`ValidationResult <pip_services3_commons.validate.ValidationResult.ValidationResult>`.
+    Validation errors are usually generated based in :class:`ValidationResult <pip_services4_data.validate.ValidationResult.ValidationResult>`.
     If using strict mode, warnings will also raise validation exceptions.
     """
 

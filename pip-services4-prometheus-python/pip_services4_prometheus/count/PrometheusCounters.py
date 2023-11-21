@@ -24,7 +24,7 @@ class PrometheusCounters(CachedCounters, IReferenceable, IOpenable):
 
     ### Configuration parameters ###
         - connection(s):
-          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`
+          - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
           - protocol:              connection protocol: http or https
           - host:                  host name or IP address
           - port:                  port number
@@ -35,11 +35,11 @@ class PrometheusCounters(CachedCounters, IReferenceable, IOpenable):
           - timeout:               invocation timeout in milliseconds (default: 10 sec)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
 
-    See :class:`RestService <pip_services3_rpc.controllers.RestService.RestService>`, :class:`CommandableHttpService <pip_services3_rpc.controllers.CommandableHttpService.CommandableHttpService>`,
+    See :class:`RestController<pip_services4_http.controllers.RestController.RestController>`, :class:`CommandableHttpService <pip_services4_rpc.controllers.CommandableHttpService.CommandableHttpService>`,
 
     Example:
 

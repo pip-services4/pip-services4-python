@@ -10,13 +10,13 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [Configuration](https://www.pipservices.org/recipies/configuration)
+* [Configuration](http://docs.pipservices.org/v4/tutorials/beginner_tutorials/configuration/)
 * [Logging](https://www.pipservices.org/recipies/active-logic)
 * [Virtual memory configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144)
 * [API Reference](https://pip-services4-python.github.io/pip-services4-elasticsearch-python)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 

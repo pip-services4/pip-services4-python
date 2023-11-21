@@ -16,7 +16,7 @@ class AwsConnectionResolver(IConfigurable, IReferenceable):
 
     ### Configuration parameters ###
     - connections:
-        - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`
+        - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
         - region:                      (optional) AWS region
         - partition:                   (optional) AWS partition
         - service:                     (optional) AWS service
@@ -24,16 +24,16 @@ class AwsConnectionResolver(IConfigurable, IReferenceable):
         - resource:                    (optional) AWS resource id
         - arn:                         (optional) AWS resource ARN
     - credentials:
-        - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
+        - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
         - access_id:                   AWS access/client id
         - access_key:                  AWS access/client id
 
     ### References ###
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
         - *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
 
-    See :class:`ConnectionParams <pip_services3_components.connect.ConnectionParams.ConnectionParams>` (in the Pip.Services components package),
-    :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` (in the Pip.Services components package)
+    See :class:`ConnectionParams <pip_services4_config.connect.ConnectionParams.ConnectionParams>` (in the Pip.Services components package),
+    :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` (in the Pip.Services components package)
 
     .. code-block:: python
     

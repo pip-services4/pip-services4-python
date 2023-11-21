@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.persistence.__init__
+    pip_services4_data.persistence.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Pip-services-data.persistence initialisation.

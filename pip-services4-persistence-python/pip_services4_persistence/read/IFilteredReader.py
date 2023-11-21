@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_data.IFilteredReader
+    pip_services4_data.IFilteredReader
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Interface for filtered data readers.

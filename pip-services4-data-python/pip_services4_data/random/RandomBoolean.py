@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.random.RandomBoolean
+    pip_services4_commons.random.RandomBoolean
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     RandomBoolean implementation

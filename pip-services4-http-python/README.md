@@ -18,10 +18,10 @@ The module contains the following packages:
 * [Microservice Facade](https://www.pipservices.org/docs/tutorials/microservice-facade/microservice-facade-main) 
 * [Client Library. Step 2](https://www.pipservices.org/docs/tutorials/client-lib/direct-client)
 * [Client Library. Step 3](https://www.pipservices.org/docs/tutorials/client-lib/http-client)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-http-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-http-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 

@@ -19,7 +19,7 @@ class CommandableAzureFunction(AzureFunction):
     """
     Abstract Azure Function function, that acts as a container to instantiate and run components
     and expose them via external entry point. All actions are automatically generated for commands
-    defined in :class:`ICommandable <pip_services4_commons.commands.ICommandable.ICommandable>`. Each command is exposed as an action defined by "cmd" parameter.
+    defined in :class:`ICommandable <pip_services4_rpc.commands.ICommandable.ICommandable>`. Each command is exposed as an action defined by "cmd" parameter.
     
     Container configuration for this Azure Function is stored in `"./config/config.yml"` file.
     But this path can be overridden by `CONFIG_PATH` environment variable.
@@ -27,10 +27,10 @@ class CommandableAzureFunction(AzureFunction):
     Note: This component has been deprecated. Use Azure FunctionService instead.
     
     ### References ###
-        - `*:logger:*:*:1.0`:            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>`  components to pass log messages
-        - `*:counters:*:*:1.0`:          (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>`  components to pass collected measurements
-        - `*:service:azurefunc:*:1.0`: (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
-        - `*:service:commandable-azurefunc:*:1.0`: (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
+        - `*:logger:*:*:1.0`:            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>`  components to pass log messages
+        - `*:counters:*:*:1.0`:          (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>`  components to pass collected measurements
+        - `*:controller:azurefunc:*:1.0`: (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
+        - `*:controller:commandable-azurefunc:*:1.0`: (optional) :class:`IAzureFunctionController <pip_services4_azure.controllers.IAzureFunctionController.IAzureFunctionController>` controllers to handle action requests
 
     Example:
 
@@ -38,10 +38,10 @@ class CommandableAzureFunction(AzureFunction):
         class MyAzureFunctionFunction(CommandableAzureFunction):
             def __init__(self):
                 super().__init__("mygroup", "MyGroup AzureFunction")
-                self._dependency_resolver.put("controller", Descriptor("mygroup", "service", "*", "*", "1.0"))
+                self._dependency_resolver.put("service", Descriptor("mygroup", "service", "*", "*", "1.0"))
                 
         azure_function = MyAzureFunctionFunction()
-        service.run()
+        azure_function.run()
         print("MyAzureFunction is started")
     """
 

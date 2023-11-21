@@ -26,7 +26,7 @@ class AzureConnectionParams(ConfigParams):
         - credentials:
             - auth_code:     authorization code or null if using custom auth
 
-    In addition to standard parameters :class:`CredentialParams <pip_services4_components.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
+    In addition to standard parameters :class:`CredentialParams <pip_services4_config.auth.CredentialParams.CredentialParams>` may contain any number of custom parameters
 
     See :class:`AzureConnectionResolver <pip_services4_azure.connect.AzureConnectionResolver.AzureConnectionResolver>`
 

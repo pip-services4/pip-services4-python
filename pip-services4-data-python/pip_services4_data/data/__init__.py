@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.data.__init__
+    pip_services4_commons.data.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Abstract, portable data types. For example – anytype, anyvalues, anyarrays, anymaps, stringmaps

@@ -21,12 +21,12 @@ class PostgresConnection(IReferenceable, IConfigurable, IOpenable):
 
     ### Configuration parameters ###
         - connection(s):
-            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:             (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - host:                      host name or IP address
             - port:                      port number (default: 27017)
             - uri:                       resource URI or connection string with all parameters in it
         - credential(s):
-            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>`
+            - store_key:                 (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
             - username:                  (optional) user name
             - password:                  (optional) user password
         - options:
@@ -35,9 +35,9 @@ class PostgresConnection(IReferenceable, IConfigurable, IOpenable):
             - max_pool_size:        (optional) maximum number of clients the pool should contain (default: 10)
 
     ### References ###
-        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages components to pass log messages
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_components.connect.IDiscovery.IDiscovery>` services
-        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_components.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
+        - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages components to pass log messages
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services
+        - `*:credential-store:*:*:1.0` (optional) :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>` stores to resolve credentials
 
     """
 

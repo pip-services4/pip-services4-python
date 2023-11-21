@@ -21,7 +21,7 @@ class LinkReferencesDecorator(ReferencesDecorator, IOpenable):
     """
     References decorator that automatically sets references to newly added components
     that implement :class:`IReferenceable <pip_services4_commons.refer.IReferenceable.IReferenceable>` interface and unsets references
-    from removed components that implement :class:`IUnreferenceable <pip_services4_commons.refer.IUnreferenceable.IUnreferenceable>` interface.
+    from removed components that implement :class:`IUnreferenceable <pip_services4_compoents.refer.IUnreferenceable.IUnreferenceable>` interface.
     """
 
     def __init__(self, next_references: IReferences, top_references: IReferences):

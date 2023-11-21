@@ -26,10 +26,10 @@ class CloudWatchLogger(CachedLogger, IReferenceable, IOpenable):
         - stream:                        (optional) Cloud Watch Log stream (default: context name)
         - group:                         (optional) Cloud Watch Log group (default: context instance ID or hostname)
         - connections:
-            - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:               (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - region:                      (optional) AWS region
         - credentials:
-            - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
+            - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services4_config.auth.ICredentialStore.ICredentialStore>`
             - access_id:                   AWS access/client id
             - access_key:                  AWS access/client id
         - options:
@@ -37,13 +37,13 @@ class CloudWatchLogger(CachedLogger, IReferenceable, IOpenable):
             - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
 
     ### References ###
-        - `*:context-info:*:*:1.0`      (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
-        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` controllers to resolve connection
+        - `*:context-info:*:*:1.0`      (optional) :class:`ContextInfo <pip_services4_components.context.ContextInfo.ContextInfo>` to detect the context id and specify counters source
+        - `*:discovery:*:*:1.0`         (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` controllers to resolve connection
         - `*:credential-store:*:*:1.0`  (optional) Credential stores to resolve credentials
 
-    See :class:`Counter <pip_services3_components.count.Counter.Counter>`,
-    :class:`CachedCounters <pip_services3_components.count.CachedCounters.CachedCounters>`,
-    :class:`CompositeLogger <pip_services3_components.log.CompositeLogger.CompositeLogger>`
+    See :class:`Counter <pip_services4_observability.count.Counter.Counter>`,
+    :class:`CachedCounters <pip_services4_observability.count.CachedCounters.CachedCounters>`,
+    :class:`CompositeLogger <pip_services4_observability.count.CompositeLogger.CompositeLogger>`
 
     Example:
 
@@ -105,7 +105,7 @@ class CloudWatchLogger(CachedLogger, IReferenceable, IOpenable):
 
         :param references: references to locate the component dependencies.
 
-        See :class:`IReferences <pip_services3_commons.refer.IReferences.IReferences>`
+        See :class:`IReferences <pip_services4_components.refer.IReferences.IReferences>`
         """
         super().set_references(references)
         self.__logger.set_references(references)

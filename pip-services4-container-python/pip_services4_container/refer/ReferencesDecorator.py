@@ -104,7 +104,7 @@ class ReferencesDecorator(IReferences):
 
         :return: a matching component component.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when no references found.
         """
         components = self.find(locator, True)
         return components[0] if len(components) > 0 else None
@@ -131,7 +131,7 @@ class ReferencesDecorator(IReferences):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when no references found.
         """
         return self.find(locator, True)
 
@@ -145,6 +145,6 @@ class ReferencesDecorator(IReferences):
 
         :return: a list with matching component references.
 
-        :raises: a :class:`ReferenceException <pip_services4_commons.refer.ReferenceException.ReferenceException>` when required is set to true but no references found.
+        :raises: a :class:`ReferenceException <pip_services4_compoents.refer.ReferenceException.ReferenceException>` when required is set to true but no references found.
         """
         return self.base_references.find(locator, required)

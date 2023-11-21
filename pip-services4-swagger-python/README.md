@@ -14,8 +14,8 @@ The module contains the following packages:
 
 * [API Reference](https://pip-services4-python.github.io/pip-services4-swagger-python)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 

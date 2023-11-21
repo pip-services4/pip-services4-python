@@ -26,7 +26,7 @@ class DataDogLogger(CachedLogger, IReferenceable, IOpenable):
         - level:             maximum log level to capture
         - source:            source (context) name
         - connection:
-            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`
+            - discovery_key:         (optional) a key to retrieve the connection from :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>`
             - protocol:              (optional) connection protocol: http or https (default: https)
             - host:                  (optional) host name or IP address (default: http-intake.logs.datadoghq.com)
             - port:                  (optional) port number (default: 443)
@@ -41,8 +41,8 @@ class DataDogLogger(CachedLogger, IReferenceable, IOpenable):
             - max_retries:     maximum number of retries (default: 3)
 
     ### References ###
-        - `*:context-info:*:*:1.0`           (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
-        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` services to resolve connection
+        - `*:context-info:*:*:1.0`           (optional) :class:`ContextInfo <pip_services4_components.context.ContextInfo.ContextInfo>` to detect the context id and specify counters source
+        - `*:discovery:*:*:1.0`        (optional) :class:`IDiscovery <pip_services4_config.connect.IDiscovery.IDiscovery>` services to resolve connection
 
     Example:
 

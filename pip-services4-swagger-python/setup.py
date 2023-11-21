@@ -9,7 +9,7 @@ except:
 setup(
     name='pip_services4_swagger',
     version='0.0.1',
-    url='http://github.com/pip-services4-python/pip-services4-swagger-python',
+    url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--swagger-python',
     license='MIT',
     description='Swagger UI for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',

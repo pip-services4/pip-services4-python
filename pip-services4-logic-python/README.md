@@ -11,12 +11,12 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [Logging](https://www.pipservices.org/recipies/logging)
-* [Configuration](https://www.pipservices.org/recipies/configuration) 
-* [API Reference](https://pip-services3-python.github.io/pip-services4-logic-python/index.html)
+* [Logging](http://docs.pipservices.org/v4/tutorials/beginner_tutorials/observability/logging/)
+* [Configuration](http://docs.pipservices.org/v4/tutorials/beginner_tutorials/configuration/) 
+* [API Reference](https://pip-services4-python.github.io/pip-services4-logic-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 
@@ -29,7 +29,7 @@ Example how to use caching and locking.
 Here we assume that references are passed externally.
 
 ```python
-from pip_services3_commons.refer import Descriptor, References, IReferences, IReferenceable
+from pip_services4_commons.refer import Descriptor, References, IReferences, IReferenceable
 from pip_services4_logic.cache import ICache, MemoryCache
 from pip_services4_logic.lock.ILock import ILock
 from pip_services4_logic.lock.MemoryLock import MemoryLock
@@ -76,7 +76,7 @@ If you need to create components using their locators (descriptors) implement
 component factories similar to the example below.
 
 ```python
-from pip_services3_commons.refer import Descriptor
+from pip_services4_commons.refer import Descriptor
 from pip_services4_components.build import Factory
 
 

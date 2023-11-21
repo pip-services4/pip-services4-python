@@ -6,7 +6,7 @@ from typing import Any, List, Sequence
 from pip_services4_commons.convert import StringConverter
 
 """
-    pip_services3_commons.data.MultiString
+    pip_services4_commons.data.MultiString
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     MultiString implementation
@@ -138,7 +138,7 @@ class MultiString(dict):
 
         :param value: the args to initialize MultiString.
         :return: a MultiString object.
-        See :class:`StringValueMap <pip_services3_commons.data.StringValueMap.StringValueMap>`
+        See :class:`StringValueMap <pip_services4_commons.data.StringValueMap.StringValueMap>`
         """
         return MultiString(value)
 

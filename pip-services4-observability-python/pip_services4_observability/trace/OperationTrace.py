@@ -41,7 +41,7 @@ class OperationTrace:
         """
         The description of the captured error
         
-        :class:`ErrorDescription <pip_services3_commons.errors.ErrorDescription.ErrorDescription>`,
-        :class:`ApplicationException <pip_services3_commons.errors.ApplicationException.ApplicationException>`
+        :class:`ErrorDescription <pip_services4_commons.errors.ErrorDescription.ErrorDescription>`,
+        :class:`ApplicationException <pip_services4_commons.errors.ApplicationException.ApplicationException>`
         """
         self.error: ErrorDescription = error

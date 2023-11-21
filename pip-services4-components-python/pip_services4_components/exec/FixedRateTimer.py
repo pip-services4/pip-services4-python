@@ -201,7 +201,7 @@ class FixedRateTimer(IClosable):
     def close(self, context: Optional[IContext]):
         """
         Closes the timer.
-        This is __required by :class:`IClosable <pip_services4_commons.exec.IClosable.IClosable>` interface,
+        This is __required by :class:`IClosable <pip_services4_components.run.IClosable.IClosable>` interface,
         but besides that it is identical to stop().
 
         :param context: (optional) transaction id to trace execution through call chain.

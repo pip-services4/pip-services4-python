@@ -14,7 +14,7 @@ class MessageQueueFactory(Factory, IMessageQueueFactory, IConfigurable, IReferen
     Creates :class:`IMessageQueue <pip_services4_messaging.queues.IMessageQueue.IMessageQueue>`. components by their descriptors.
     Name of created message queue is taken from its descriptor.
 
-    See :class:`Factory <pip_services3_components.build.Factory.Factory>`,
+    See :class:`Factory <pip_services4_components.build.Factory.Factory>`,
     :class:`MessageQueue <pip_services4_messaging.queues.MessageQueue.MessageQueue>`
     """
 

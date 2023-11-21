@@ -13,14 +13,14 @@ from abc import ABC
 from ..config.ConfigParams import ConfigParams
 
 
-class IConfigurable(ABC):
+pip_services4_components.config.IConfigurable.IConfigurable(ABC):
     """
      An interface to set configuration parameters to an object.
 
      It can be added to any existing class by implementing a single :func:`configure()` method.
 
      If you need to emphasis the fact that :func:`configure()` method can be called multiple times
-     to change object configuration in runtime, use :class:`IReconfigurable <pip_services4_commons.config.IReconfigurable.IReconfigurable>` interface instead.
+     to change object configuration in runtime, use :class:`IReconfigurable <pip_services4_components.config.IReconfigurable.IReconfigurable>` interface instead.
 
      Example:
 

@@ -18,7 +18,7 @@ class IClosable(ABC):
     """
     Interface for components that require explicit closure.
 
-    For components that require opening as well as closing use :class:`IOpenable <pip_services4_commons.exec.IOpenable.IOpenable>` interface instead.
+    For components that require opening as well as closing use :class:`IOpenable <pip_services4_components.run.IOpenable.IOpenable>` interface instead.
 
     .. code-block:: python
         class MyConnector(ICloseable):

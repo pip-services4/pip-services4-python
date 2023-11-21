@@ -11,10 +11,10 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [API Reference](https://pip-services3-python.github.io/pip-services4-config-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-config-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 
@@ -28,11 +28,11 @@ The resolvers support "discovery_key" and "store_key" configuration parameters
 to retrieve configuration from discovery services and credential stores respectively.
 
 ```python
-from pip_services3_commons.config import ConfigParams, IConfigurable
-from pip_services3_commons.refer import IReferences, IReferenceable
-from pip_services3_commons.run import IOpenable
-from pip_services3_components.auth import CredentialParams, CredentialResolver
-from pip_services3_components.connect import ConnectionParams, ConnectionResolver
+from pip_services4_commons.config import ConfigParams, IConfigurable
+from pip_services4_commons.refer import IReferences, IReferenceable
+from pip_services4_commons.run import IOpenable
+from pip_services4_components.auth import CredentialParams, CredentialResolver
+from pip_services4_components.connect import ConnectionParams, ConnectionResolver
 
 
 class MyComponent(IConfigurable, IReferenceable, IOpenable):

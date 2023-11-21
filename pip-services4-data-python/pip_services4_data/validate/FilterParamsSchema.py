@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.FilterParamsSchema
+    pip_services4_commons.validate.FilterParamsSchema
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     FilterParams schema implementation
@@ -15,7 +15,7 @@ from .MapSchema import MapSchema
 
 class FilterParamsSchema(MapSchema):
     """
-    Schema to validate :class:`FilterParams <pip_services3_commons.data.FilterParams.FilterParams>`.
+    Schema to validate :class:`FilterParams <pip_services4_data.query.FilterParams.FilterParams>`.
     """
 
     def __init__(self):

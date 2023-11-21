@@ -1,6 +1,6 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Persistence components for Python
 
-This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
+This module is a part of the [Pip.Services](https://www.pipservices.org/) polyglot microservices toolkit.
 
 It dynamic and static objects and data handling components.
 
@@ -15,10 +15,10 @@ The module contains the following packages:
 <a name="links"></a> Quick links:
 
 * [Memory persistence](https://www.pipservices.org/recipies/memory-persistence)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-persistence-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-persistence-python/index.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/v4/get_help/)
+* [Contribute](http://docs.pipservices.org/v4/contribute/)
 
 ## Use
 

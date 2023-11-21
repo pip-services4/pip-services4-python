@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_commons.validate.Schema
+    pip_services4_commons.validate.Schema
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Validation schema for complex objects.
@@ -155,7 +155,7 @@ class Schema:
     def _perform_type_validation(self, path: str, typ: Any, value: Any, results: List[ValidationResult]):
         """
         Validates a given args to match specified type.
-        The type can be defined as a Schema, type, a type name or :class:`TypeCode <pip_services3_commons.convert.TypeCode.TypeCode>`.
+        The type can be defined as a Schema, type, a type name or :class:`TypeCode <pip_services4_commons.convert.TypeCode.TypeCode>`.
         When type is a Schema, it executes validation recursively against that Schema.
 
         :param path: a dot notation path to the args.
@@ -217,7 +217,7 @@ class Schema:
     def validate_and_return_exception(self, trace_id: Optional[str], value: Any,
                                       strict: bool = False) -> ValidationException:
         """
-        Validates the given args and returns a :class:`ValidationException <pip_services3_commons.validate.ValidationException.ValidationException>` if errors were found.
+        Validates the given args and returns a :class:`ValidationException <pip_services4_data.validate.ValidationException.ValidationException>` if errors were found.
 
         :param trace_id: (optional) transaction id to trace execution through call chain.
         :param value: a args to be validated.
@@ -228,7 +228,7 @@ class Schema:
 
     def validate_and_throw_exception(self, trace_id: Optional[str], value: Any, strict: bool = False):
         """
-        Validates the given args and throws a :class:`ValidationException <pip_services3_commons.validate.ValidationException.ValidationException>` if errors were found.
+        Validates the given args and throws a :class:`ValidationException <pip_services4_data.validate.ValidationException.ValidationException>` if errors were found.
 
         :param trace_id: (optional) transaction id to trace execution through call chain.
 

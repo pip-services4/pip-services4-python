@@ -36,8 +36,8 @@ class CloudFunction(Container, ABC):
     But this path can be overriden by `CONFIG_PATH` environment variable.
 
     ### References ###
-        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_components.log.ILogger.ILogger>` components to pass log messages
-        - `*:counters:*:*:1.0`        (optional) :class:`ICounters <pip_services4_components.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:logger:*:*:1.0`            (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
+        - `*:counters:*:*:1.0`        (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
         - `*:service:cloudfunc:*:1.0`      (optional) :class:`ICounters <pip_services4_gcp.controller.iCloudFunctionservice.iCloudFunctionservice>` controller to handle action requests
         - `*:service:commandable-cloudfunc:*:1.0` (optional) :class:`ICounters <pip_services4_gcp.controller.iCloudFunctionservice.iCloudFunctionservice>` controller to handle action requests
 

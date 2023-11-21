@@ -25,7 +25,7 @@ class Cleaner:
         """
         Clears state of specific component.
 
-        To be cleaned state components must implement :class:`ICleanable <pip_services4_commons.exec.ICleanable.ICleanable>` interface.
+        To be cleaned state components must implement :class:`ICleanable <pip_services4_components.run.ICleanable.ICleanable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.
@@ -41,7 +41,7 @@ class Cleaner:
         """
         Clears state of multiple components.
 
-        To be cleaned state components must implement :class:`ICleanable <pip_services4_commons.exec.ICleanable.ICleanable>` interface.
+        To be cleaned state components must implement :class:`ICleanable <pip_services4_components.run.ICleanable.ICleanable>` interface.
         If they don't the call to this method has no effect.
 
         :param context: (optional) transaction id to trace execution through call chain.

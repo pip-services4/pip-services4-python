@@ -14,7 +14,7 @@ The module contains the following packages:
 <a name="links"></a> Quick links:
 
 * [Configuration](http://docs.pipservices.org/toolkit/getting_started/configurations/)
-* [API Reference](https://pip-services3-python.github.io/pip-services4-gcp-python/index.html)
+* [API Reference](https://pip-services4-python.github.io/pip-services4-gcp-python/index.html)
 * [Change Log](CHANGELOG.md)
 * [Get Help](http://docs.pipservices.org/get_help/)
 * [Contribute](http://docs.pipservices.org/contribute/)

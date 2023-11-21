@@ -165,8 +165,8 @@ class PropertyReflector:
                         property_name = '__' + property_name.split('__')[-1]
 
                     # Prepare protected fields
-                    elif property_name.startswith('_'):
-                        property_name = property_name[1:]
+                    # elif property_name.startswith('_'):
+                    #     property_name = property_name[1:]
 
                     properties[property_name] = property
 

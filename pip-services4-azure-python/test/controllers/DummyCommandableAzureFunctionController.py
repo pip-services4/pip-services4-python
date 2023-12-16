@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from pip_services4_components.refer import Descriptor
 
-from pip_services4_azure.services import CommandableAzureFunctionController
+from pip_services4_azure.controllers import CommandableAzureFunctionController
 
 
 class DummyCommandableAzureFunctionController(CommandableAzureFunctionController):

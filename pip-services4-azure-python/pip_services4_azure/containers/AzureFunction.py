@@ -20,7 +20,7 @@ from pip_services4_rpc.trace import InstrumentTiming
 import azure.functions as func
 
 from .AzureFunctionContextHelper import AzureFunctionContextHelper
-from ..services import IAzureFunctionController
+from ..controllers import IAzureFunctionController
 
 
 class AzureFunction(Container):

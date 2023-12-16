@@ -9,7 +9,7 @@ from pip_services4_components.refer import Descriptor, IReferences
 from pip_services4_data.query import FilterParams, PagingParams
 from pip_services4_data.validate import ObjectSchema, FilterParamsSchema, PagingParamsSchema
 
-from pip_services4_azure.services.AzureFunctionController import AzureFunctionController
+from pip_services4_azure.controllers.AzureFunctionController import AzureFunctionController
 from test.Dummy import Dummy
 from test.DummySchema import DummySchema
 from test.IDummyService import IDummyService

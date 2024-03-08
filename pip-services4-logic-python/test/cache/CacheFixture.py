@@ -26,10 +26,10 @@ class CacheFixture:
 
         # Set null value
         value = self._cache.store(None, "test", None, 0)
-        assert value == None
+        assert value is None
 
         value = self._cache.retrieve(None, "test")
-        assert value == None
+        assert value is None
 
         # Set the second value
         value = self._cache.store(None, "test", "ABC", 0)
@@ -42,7 +42,7 @@ class CacheFixture:
         self._cache.remove(None, "test")
 
         value = self._cache.retrieve(None, "test")
-        assert value == None
+        assert value is None
 
     def test_read_after_timeout(self, timeout):
         # Set value

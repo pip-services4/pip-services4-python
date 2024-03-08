@@ -35,7 +35,7 @@ class TestMapConverter:
         # Handling nulls
         value = None
         result = MapConverter.to_nullable_map(value)
-        assert result == None
+        assert result is None
 
         # Handling simple objects
         value = StubClass(123, 234)

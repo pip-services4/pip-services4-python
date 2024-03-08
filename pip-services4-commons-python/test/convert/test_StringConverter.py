@@ -15,7 +15,7 @@ from pip_services4_commons.convert import StringConverter
 class TestStringConverter:
 
     def test_to_string(self):
-        assert StringConverter.to_nullable_string(None) == None
+        assert StringConverter.to_nullable_string(None) is None
         assert "xyz" == StringConverter.to_string("xyz")
         assert "123" == StringConverter.to_string(123)
         assert "True" == StringConverter.to_string(True)

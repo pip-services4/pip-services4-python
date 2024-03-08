@@ -22,7 +22,7 @@ class TestRecursiveMapConverter:
         # Handling nulls
         value = None
         result = RecursiveMapConverter.to_nullable_map(value)
-        assert result == None
+        assert result is None
 
         # Handling simple objects
         value = InitTestClass(123, 234)

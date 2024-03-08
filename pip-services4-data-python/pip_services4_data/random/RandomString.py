@@ -22,7 +22,7 @@ _alpha = _alpha_upper + _alpha_lower
 _chars = _alpha + _digits + _symbols
 
 
-class RandomString(object):
+class RandomString:
     """
     Random generator for string values.
 

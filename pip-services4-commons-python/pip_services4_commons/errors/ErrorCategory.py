@@ -9,7 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-class ErrorCategory(object):
+class ErrorCategory:
     """
     Defines standard error categories to application exceptions supported by PipServices toolkit.
     """

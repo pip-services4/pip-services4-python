@@ -13,7 +13,7 @@ import time
 from typing import Any
 
 
-class CacheEntry(object):
+class CacheEntry:
     """
     Data object to store cached values with their keys used by :class:`MemoryCache <pip_services4_logic.cache.MemoryCache.MemoryCache>`
     """

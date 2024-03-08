@@ -5,7 +5,7 @@ import grpc
 from . import commandable_pb2 as commandable__pb2
 
 
-class CommandableStub(object):
+class CommandableStub:
     """The commandable service definition.
     """
 
@@ -22,7 +22,7 @@ class CommandableStub(object):
                 )
 
 
-class CommandableServicer(object):
+class CommandableServicer:
     """The commandable service definition.
     """
 
@@ -47,7 +47,7 @@ def add_CommandableServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class Commandable(object):
+class Commandable:
     """The commandable service definition.
     """
 

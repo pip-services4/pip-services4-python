@@ -13,7 +13,7 @@ from typing import Any
 from .LogLevel import LogLevel
 
 
-class LogLevelConverter(object):
+class LogLevelConverter:
     """
     Helper class to convert log level values.
     """

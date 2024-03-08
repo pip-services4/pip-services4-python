@@ -5,7 +5,7 @@ import grpc
 from . import dummies_pb2 as dummies__pb2
 
 
-class DummiesStub(object):
+class DummiesStub:
     """The dummies service definition.
     rpc get_dummies (DummiesPageRequest) returns (DummiesPageReply) {}
     rpc get_dummy_by_id (DummyIdRequest) returns (DummyObjectReply) {}
@@ -47,7 +47,7 @@ class DummiesStub(object):
                 )
 
 
-class DummiesServicer(object):
+class DummiesServicer:
     """The dummies service definition.
     rpc get_dummies (DummiesPageRequest) returns (DummiesPageReply) {}
     rpc get_dummy_by_id (DummyIdRequest) returns (DummyObjectReply) {}
@@ -121,7 +121,7 @@ def add_DummiesServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class Dummies(object):
+class Dummies:
     """The dummies service definition.
     rpc get_dummies (DummiesPageRequest) returns (DummiesPageReply) {}
     rpc get_dummy_by_id (DummyIdRequest) returns (DummyObjectReply) {}

@@ -10,7 +10,7 @@
 from pip_services4_commons.convert import RecursiveMapConverter
 
 
-class InitTestClass(object):
+class InitTestClass:
     def __init__(self, value1, value2):
         self.value1 = value1
         self.value2 = value2

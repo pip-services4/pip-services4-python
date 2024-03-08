@@ -3,7 +3,7 @@ import time
 import random
 
 
-class Counter(object):
+class Counter:
     def __init__(self, start=0):
         self.lock = threading.Lock()
         self.value = start

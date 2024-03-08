@@ -11,7 +11,7 @@
 from typing import Any
 
 
-class Reference(object):
+class Reference:
     """
     Contains a reference to a component and locator to find it.
     It is used by :class:`References <pip_services4_commons.refer.References.References>` to store registered component references.

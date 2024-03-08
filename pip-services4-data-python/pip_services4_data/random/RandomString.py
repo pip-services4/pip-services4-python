@@ -8,18 +8,13 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+
+from random import choice
+from string import ascii_uppercase, ascii_lowercase, digits, punctuation
 from typing import List
 
-import random
 from .RandomBoolean import RandomBoolean
 from .RandomInteger import RandomInteger
-
-_digits = "01234956789"
-_symbols = "_,.:-/.[].{},#-!,$=%.+^.&*-() "
-_alpha_lower = "abcdefghijklmnopqrstuvwxyz"
-_alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-_alpha = _alpha_upper + _alpha_lower
-_chars = _alpha + _digits + _symbols
 
 
 class RandomString(object):
@@ -46,7 +41,7 @@ class RandomString(object):
         if values is None or len(values) == 0:
             return ''
 
-        return random.choice(values)
+        return choice(values)
 
     @staticmethod
     def pick_char(values: str) -> str:
@@ -77,7 +72,7 @@ class RandomString(object):
             value = value[0:1].upper() + value[1:]
 
         if RandomBoolean.chance(1, 3):
-            value = value + random.choice(_symbols)
+            value = value + choice(punctuation)
 
         return value
 
@@ -87,7 +82,7 @@ class RandomString(object):
         Generates random alpha characted [A-Za-z]
         :return: a random characted.
         """
-        return random.choice(_alpha)
+        return choice("".join((ascii_uppercase, ascii_lowercase)))
 
     @staticmethod
     def next_string(min_size: int, max_size: int) -> str:
@@ -101,11 +96,11 @@ class RandomString(object):
 
         :return: a random string.
         """
-        result = ''
+        result = ""
 
         max_size = max_size if max_size != None else min_size
         length = RandomInteger.next_integer(min_size, max_size)
         for i in range(length):
-            result += random.choice(_chars)
+            result += choice("".join((ascii_uppercase, ascii_lowercase, digits, punctuation)))
 
         return result

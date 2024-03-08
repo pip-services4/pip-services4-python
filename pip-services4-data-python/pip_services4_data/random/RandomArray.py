@@ -8,9 +8,10 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from typing import List, Any
 
-import random
+from random import choice
+from typing import List, Any, Optional
+
 
 
 class RandomArray:
@@ -25,7 +26,7 @@ class RandomArray:
     """
 
     @staticmethod
-    def pick(values: List[Any]) -> Any:
+    def pick(values: List[Any]) -> Optional[Any]:
         """
         Picks a random element from specified array.
 
@@ -36,4 +37,4 @@ class RandomArray:
         if values is None or len(values) == 0:
             return None
 
-        return random.choice(values)
+        return choice(values)

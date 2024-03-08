@@ -52,6 +52,7 @@ class RandomDateTime:
 
         _time = ((min_year.timestamp() * 1000) + RandomInteger.next_integer(0, diff)) / 1000
         date = datetime.datetime.fromtimestamp(_time, pytz.utc)
+
         return datetime.datetime(date.year, date.month, date.day)
 
     @staticmethod
@@ -73,26 +74,28 @@ class RandomDateTime:
             return min_year
 
         _time = ((max_year.timestamp() * 1000) + RandomInteger.next_integer(0, diff)) / 1000
+
         return datetime.datetime.fromtimestamp(_time, pytz.utc)
 
     @staticmethod
-    def update_datetime(value: datetime, range: Union[int, float] = None) -> datetime:
+    def update_datetime(value: datetime, range_of_nums: Union[int, float] = None) -> datetime:
         """
         Updates (drifts) a Date args within specified range defined
 
         :param value: a Date args to drift.
-        :param range: (optional) a range in milliseconds. Default: 10 days
+        :param range_of_nums: (optional) a range in milliseconds. Default: 10 days
         :return: an updated DateTime args.
         """
-        if range == 0 or range is None:
-            range = 10
+        if range_of_nums == 0 or range_of_nums is None:
+            range_of_nums = 10
         else:
-            range = range / 24 / 3600000
+            range_of_nums = range_of_nums / 24 / 3600000
 
-        if range < 0:
+        if range_of_nums < 0:
             return value
 
-        days = RandomFloat.next_float(-range, range)
+        days = RandomFloat.next_float(-range_of_nums, range_of_nums)
         _time = value + datetime.timedelta(days)
         _time.replace(tzinfo=pytz.utc)
+
         return _time

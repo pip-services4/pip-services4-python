@@ -8,7 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-import random
+from random import choice as random_choice
 from ..random import RandomString
 from .RandomBoolean import RandomBoolean
 from .RandomInteger import RandomInteger
@@ -125,7 +125,7 @@ class RandomText:
 
         :return: a random color name.
         """
-        return random.choice(_colors)
+        return random_choice(_colors)
 
     @staticmethod
     def stuff() -> str:
@@ -134,7 +134,7 @@ class RandomText:
 
         :return: a random noun.
         """
-        return random.choice(_stuffs)
+        return random_choice(_stuffs)
 
     @staticmethod
     def noun() -> str:
@@ -153,7 +153,7 @@ class RandomText:
 
         :return: a random adjective.
         """
-        return random.choice(_adjectives)
+        return random_choice(_adjectives)
 
     @staticmethod
     def verb() -> str:
@@ -162,7 +162,7 @@ class RandomText:
 
         :return: a random verb.
         """
-        return random.choice(_verbs)
+        return random_choice(_verbs)
 
     @staticmethod
     def phrase(min_size: int, max_size: int = None) -> str:
@@ -182,9 +182,9 @@ class RandomText:
             return ""
 
         result = ""
-        result += random.choice(_all_words)
+        result += random_choice(_all_words)
         while len(result) < size:
-            result += " " + random.choice(_all_words).lower()
+            result += " " + random_choice(_all_words).lower()
 
         return result
 
@@ -199,12 +199,12 @@ class RandomText:
         result = ""
 
         if RandomBoolean.chance(3, 5):
-            result += random.choice(_name_prefixes) + " "
+            result += random_choice(_name_prefixes) + " "
 
-        result += random.choice(_first_names) + " " + random.choice(_last_names)
+        result += random_choice(_first_names) + " " + random_choice(_last_names)
 
         if RandomBoolean.chance(5, 10):
-            result += " " + random.choice(_name_suffixes)
+            result += " " + random_choice(_name_suffixes)
 
         return result
 
@@ -216,7 +216,7 @@ class RandomText:
 
         :return: a random name.
         """
-        result = ''
+        result = ""
 
         if RandomBoolean.chance(3, 5):
             result += RandomString.pick(_name_prefixes) + " "
@@ -235,7 +235,7 @@ class RandomText:
 
         :return: a random word.
         """
-        return random.choice(_all_words)
+        return random_choice(_all_words)
 
     @staticmethod
     def words(min_size: int, max_size: int = None) -> str:
@@ -253,7 +253,7 @@ class RandomText:
 
         count = RandomInteger.next_integer(min_size, max_size)
         for i in range(count):
-            result += random.choice(_all_words)
+            result += random_choice(_all_words)
 
         return result
 
@@ -291,23 +291,24 @@ class RandomText:
 
         :return: a random text.
         """
+
         max_size = max_size if max_size is not None else min_size
         size = RandomInteger.next_integer(min_size, max_size)
 
         result = ""
-        result += random.choice(_all_words)
+        result += random_choice(_all_words)
 
         while len(result) < size:
-            next = random.choice(_all_words)
+            next_char = random_choice(_all_words)
             if RandomBoolean.chance(4, 6):
-                next = " " + next.lower()
+                next_char = " " + next_char.lower()
             elif RandomBoolean.chance(2, 5):
-                next = random.choice(":,-") + next.lower()
+                next_char = random_choice(":,-") + next_char.lower()
             elif RandomBoolean.chance(3, 5):
-                next = random.choice(":,-") + " " + next.lower()
+                next_char = random_choice(":,-") + " " + next_char.lower()
             else:
-                next = random.choice(".!?") + " " + next
+                next_char = random_choice(".!?") + " " + next_char
 
-            result += next
+            result += next_char
 
         return result

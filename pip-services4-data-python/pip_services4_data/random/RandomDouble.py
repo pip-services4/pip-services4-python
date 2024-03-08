@@ -26,8 +26,7 @@ class RandomDouble:
         :return: a random double args.
         """
         if mmax is None:
-            mmax = mmin
-            mmin = 0
+            mmax, mmin = mmin, 0
 
         if mmax - mmin < 0:
             return mmin
@@ -47,6 +46,6 @@ class RandomDouble:
             rrange = 0
 
         rrange = 0.1 * value if rrange == 0 else rrange
-        min_val = value - rrange
-        max_val = value + rrange
+        min_val, max_val = value - rrange, value + rrange
+
         return RandomDouble.next_double(min_val, max_val)

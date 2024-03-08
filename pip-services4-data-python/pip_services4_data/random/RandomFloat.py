@@ -9,7 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import random
+from random import random
 
 
 class RandomFloat:
@@ -26,30 +26,29 @@ class RandomFloat:
     """
 
     @staticmethod
-    def next_float(min: float, max: float = None) -> float:
-        if max is None:
-            max = min
-            min = 0
+    def next_float(min_val: float, max_val: float = None) -> float:
+        if max_val is None:
+            max_val, min_val = min_val, 0
 
-        if max - min <= 0:
-            return min
+        if max_val - min_val <= 0:
+            return min_val
 
-        return min + random.random() * (max - min)
+        return min_val + random() * (max_val - min_val)
 
     @staticmethod
-    def update_float(value: float, range: float = None) -> float:
+    def update_float(value: float, range_of_nums: float = None) -> float:
         """
         Updates (drifts) a float args within specified range defined
 
         :param value: a float args to drift.
 
-        :param range: (optional) a range. Default: 10% of the args
+        :param range_of_nums: (optional) a range. Default: 10% of the args
 
         :return: updated random float args.
         """
-        if range is None:
-            range = 0.1 * value
+        if range_of_nums is None:
+            range_of_nums = 0.1 * value
 
-        min = value - range
-        max = value + range
-        return RandomFloat.next_float(min, max)
+        min_val, max_val = value - range_of_nums, value + range_of_nums
+
+        return RandomFloat.next_float(min_val, max_val)

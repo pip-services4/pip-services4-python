@@ -9,7 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import random
+from random import random, choice
 
 
 class RandomBoolean:
@@ -44,7 +44,8 @@ class RandomBoolean:
         max_chances = max(max_chances, chances)
         start = (max_chances - chances) / 2
         end = start + chances
-        hit = random.random() * max_chances
+        hit = random() * max_chances
+
         return start <= hit <= end
 
     @staticmethod
@@ -54,4 +55,5 @@ class RandomBoolean:
 
         :return: a random boolean.
         """
-        return random.randint(0, 100) < 50
+
+        return choice((True, False))

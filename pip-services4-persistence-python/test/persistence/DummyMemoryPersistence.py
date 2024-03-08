@@ -23,7 +23,7 @@ class DummyMemoryPersistence(IdentifiableMemoryPersistence, IPartialUpdater):
         key = filter.get_as_nullable_string("key")
 
         def filter_dummy(obj):
-            if key != None and obj['key'] != key:
+            if key is not None and obj['key'] != key:
                 return False
             return True
 

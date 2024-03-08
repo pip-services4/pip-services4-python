@@ -13,20 +13,20 @@ class TestIdGenerator:
 
     def test_next_short(self):
         id1 = IdGenerator.next_short()
-        assert id1 != None
+        assert id1 is not None
         assert len(id1) >= 9
 
         id2 = IdGenerator.next_short()
-        assert id2 != None
+        assert id2 is not None
         assert len(id2) >= 9
         assert id1 != id2
 
     def test_next_long(self):
         id1 = IdGenerator.next_long()
-        assert id1 != None
+        assert id1 is not None
         assert len(id1) == 32
 
         id2 = IdGenerator.next_long()
-        assert id2 != None
+        assert id2 is not None
         assert len(id2) == 32
         assert id1 != id2

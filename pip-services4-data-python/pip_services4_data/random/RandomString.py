@@ -98,7 +98,7 @@ class RandomString(object):
         """
         result = ""
 
-        max_size = max_size if max_size != None else min_size
+        max_size = max_size if max_size is not None else min_size
         length = RandomInteger.next_integer(min_size, max_size)
         for i in range(length):
             result += choice("".join((ascii_uppercase, ascii_lowercase, digits, punctuation)))

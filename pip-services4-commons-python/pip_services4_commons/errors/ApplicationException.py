@@ -143,7 +143,7 @@ class ApplicationException(Exception):
 
         :return: this error object
         """
-        self.code = code if code != None else 'UNKNOWN'
+        self.code = code if code is not None else 'UNKNOWN'
         self.name = code
         return self
 
@@ -156,7 +156,7 @@ class ApplicationException(Exception):
 
         :return: this error object
         """
-        self.status = status if status != None else 500
+        self.status = status if status is not None else 500
         return self
 
     def with_details(self, key: str, value: Any) -> 'ApplicationException':

@@ -39,26 +39,26 @@ class TestRecursiveMapConverter:
         value = InitTestClass(123, InitTestClass(111, 222))
         result = RecursiveMapConverter.to_nullable_map(value)
         assert isinstance(result, dict)
-        assert result != None
+        assert result is not None
         assert 123 == result["value1"]
-        assert result["value2"] != None
+        assert result["value2"] is not None
         assert isinstance(result["value2"], dict)
 
         # Handling arrays
         value = InitTestClass([InitTestClass(111, 222)], None)
         result = RecursiveMapConverter.to_nullable_map(value)
-        assert result != None
+        assert result is not None
         assert type(result["value1"]) != list
         resultElements = result["value1"]
         resultElement0 = resultElements[0]
-        assert resultElement0 != None
+        assert resultElement0 is not None
         assert 111 == resultElement0["value1"]
         assert 222 == resultElement0["value2"]
 
         # Handling map_to_map
         value = {'list': [InitTestClass(111, 222), 10], 'anotherEl': 'test'}
         result = RecursiveMapConverter.to_nullable_map(value)
-        assert result != None
+        assert result is not None
         assert type(result) is dict
         assert type(result["list"]) is dict
         value["anotherEl"] = result["anotherEl"]

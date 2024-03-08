@@ -32,7 +32,7 @@ class FilterParams(StringValueMap):
 
     def __init__(self, map: Any = None):
         super(FilterParams, self).__init__(map)
-        # if map != None:
+        # if map is not None:
         #     for (key, args) in map.items():
         #         self[key] = args
 

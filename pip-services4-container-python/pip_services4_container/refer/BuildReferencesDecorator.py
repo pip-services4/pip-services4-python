@@ -93,11 +93,11 @@ class BuildReferencesDecorator(ReferencesDecorator):
         another_descriptor = another_locator
 
         return Descriptor(
-            descriptor.get_group() if descriptor.get_group() != None else another_descriptor.get_group(),
-            descriptor.get_type() if descriptor.get_type() != None else another_descriptor.get_type(),
-            descriptor.get_kind() if descriptor.get_kind() != None else another_descriptor.get_kind(),
-            descriptor.get_name() if descriptor.get_name() != None else another_descriptor.get_name(),
-            descriptor.get_version() if descriptor.get_version() != None else another_descriptor.get_version()
+            descriptor.get_group() if descriptor.get_group() is not None else another_descriptor.get_group(),
+            descriptor.get_type() if descriptor.get_type() is not None else another_descriptor.get_type(),
+            descriptor.get_kind() if descriptor.get_kind() is not None else another_descriptor.get_kind(),
+            descriptor.get_name() if descriptor.get_name() is not None else another_descriptor.get_name(),
+            descriptor.get_version() if descriptor.get_version() is not None else another_descriptor.get_version()
         )
 
     def find(self, locator: Any, required: bool) -> List[Any]:

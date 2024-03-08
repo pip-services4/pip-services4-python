@@ -14,9 +14,9 @@ class TestDbConnection:
     connection = None
 
     mongoUri = os.getenv('MONGO_URI')
-    mongoHost = os.getenv('MONGO_HOST') if os.getenv('MONGO_HOST') != None else 'localhost'
-    mongoPort = os.getenv('MONGO_PORT') if os.getenv('MONGO_PORT') != None else 27017
-    mongoDatabase = os.getenv('MONGO_DB') if os.getenv('MONGO_DB') != None else 'test'
+    mongoHost = os.getenv('MONGO_HOST') if os.getenv('MONGO_HOST') is not None else 'localhost'
+    mongoPort = os.getenv('MONGO_PORT') if os.getenv('MONGO_PORT') is not None else 27017
+    mongoDatabase = os.getenv('MONGO_DB') if os.getenv('MONGO_DB') is not None else 'test'
 
     @classmethod
     def setup_class(cls):

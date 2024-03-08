@@ -540,7 +540,7 @@ class StringValueMap(dict):
             if len(result) > 0:
                 result += ';'
 
-            if v != None:
+            if v is not None:
                 result += k + '=' + StringConverter.to_string_with_default(v, '')
             else:
                 result += k
@@ -561,7 +561,7 @@ class StringValueMap(dict):
             if len(result) > 0:
                 result += ';'
 
-            if v != None:
+            if v is not None:
                 result += k + '=' + StringConverter.to_string_with_default(v, '')
             else:
                 result += k

@@ -53,18 +53,18 @@ class TestJsonConverter:
         # Recursive conversion
         value = '{ "value1":123, "value2": { "value1": 111, "value2": 222 } }'
         result = JsonConverter.to_nullable_map(value)
-        assert result != None
+        assert result is not None
         assert 123 == result["value1"]
-        assert result["value2"] != None
+        assert result["value2"] is not None
         assert isinstance(result["value2"], dict)
 
         # Handling arrays
         value = '{ "value1": [{ "value1": 111, "value2": 222 }] }'
         result = JsonConverter.to_nullable_map(value)
-        assert result != None
+        assert result is not None
         assert type(result["value1"]) == list
         resultElements = result["value1"]
         resultElement0 = resultElements[0]
-        assert resultElement0 != None
+        assert resultElement0 is not None
         assert 111 == resultElement0["value1"]
         assert 222 == resultElement0["value2"]

@@ -51,9 +51,9 @@ class TestMapConverter:
         # Non-recursive conversion
         # args = StubClass(123, StubClass(111, 222))
         # result = MapConverter.to_map(args, None, False)
-        # assert result != None
+        # assert result is not None
         # assert 123 == result["value1"]
-        # assert result["value2"] != None
+        # assert result["value2"] is not None
         # assert not isinstance(result["value2"], dict)
         # assert instanceof(result["value2"], StubClass)
 
@@ -61,18 +61,18 @@ class TestMapConverter:
         value = StubClass(123, StubClass(111, 222))
         result = MapConverter.to_nullable_map(value)
         assert isinstance(result, dict)
-        assert result != None
+        assert result is not None
         assert 123 == result["value1"]
-        assert result["value2"] != None
+        assert result["value2"] is not None
         # assert isinstance(result["value2"], dict)
 
         # Handling arrays
         value = StubClass([StubClass(111, 222)], None)
         result = MapConverter.to_nullable_map(value)
-        assert result != None
+        assert result is not None
         assert type(result["value1"]) == list
         resultElements = result["value1"]
         resultElement0 = resultElements[0]
-        assert resultElement0 != None
+        assert resultElement0 is not None
         # assert 111 == resultElement0["value1"]
         # assert 222 == resultElement0["value2"]

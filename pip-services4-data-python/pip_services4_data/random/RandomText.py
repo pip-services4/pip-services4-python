@@ -176,7 +176,7 @@ class RandomText:
 
         :return: a random phrase.
         """
-        max_size = max_size if max_size != None else min_size
+        max_size = max_size if max_size is not None else min_size
         size = RandomInteger.next_integer(min_size, max_size)
         if size <= 0:
             return ""

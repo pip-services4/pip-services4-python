@@ -45,7 +45,7 @@ class MemoryMessageQueue(MessageQueue, ICleanable):
         queue.send(Context.from_trace_id("123"), MessageEnvelope(None, "mymessage", "ABC"))
 
         message = queue.receive(Context.from_trace_id("123"), 0)
-        if message != None:
+        if message is not None:
             # ...
             queue.complete(Context.from_trace_id("123"), message)
     """

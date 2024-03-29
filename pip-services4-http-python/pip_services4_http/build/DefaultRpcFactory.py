@@ -19,9 +19,9 @@ class DefaultRpcFactory(Factory):
     Creates RPC components by their descriptors.
     """
 
-    HttpEndpointDescriptor = Descriptor("pip-controller", "endpoint", "http", "*", "1.0")
-    StatusServiceDescriptor = Descriptor("pip-controller", "status-controller", "http", "*", "1.0")
-    HeartbeatServiceDescriptor = Descriptor("pip-controller", "heartbeat-controller", "http", "*", "1.0")
+    HttpEndpointDescriptor = Descriptor("pip-services", "endpoint", "http", "*", "1.0")
+    StatusServiceDescriptor = Descriptor("pip-services", "status-controller", "http", "*", "1.0")
+    HeartbeatServiceDescriptor = Descriptor("pip-services", "heartbeat-controller", "http", "*", "1.0")
 
     def __init__(self):
         """

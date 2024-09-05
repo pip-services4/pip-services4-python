@@ -13,7 +13,7 @@ from abc import ABC
 from ..config.ConfigParams import ConfigParams
 
 
-pip_services4_components.config.IConfigurable.IConfigurable(ABC):
+class IConfigurable(ABC):
     """
      An interface to set configuration parameters to an object.
 

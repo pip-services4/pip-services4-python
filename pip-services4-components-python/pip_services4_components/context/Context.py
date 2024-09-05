@@ -68,7 +68,7 @@ class Context(IContext):
             if config.get(key):
                 values.put(key, config.get(key))
 
-        return Context()
+        return Context(values)
 
     @staticmethod
     def from_trace_id(trace_id: str) -> 'Context':

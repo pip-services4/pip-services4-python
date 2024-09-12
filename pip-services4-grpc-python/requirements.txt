@@ -1,7 +1,7 @@
 pytest
 grpcio >= 1.43.0, < 2.0.0
 grpcio-tools >= 1.43.0, < 2.0.0
-protobuf >= 3.19.3, < 4.0.0
+protobuf >= 3.19.3, < 6.0.0
 
 pip_services4_commons >= 0.0.1, < 1.0
 pip_services4_rpc >= 0.0.1, < 1.0

@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services4_grpc',
-    version='0.0.1',
+    version='0.0.2',
     url='http://github.com/pip-services4/pip-services4-python/tree/main/tree/main//pip-services4-grpc-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
@@ -38,7 +38,7 @@ setup(
     install_requires=[
         'grpcio >= 1.43.0, < 2.0.0',
         'grpcio-tools >= 1.43.0, < 2.0.0',
-        'protobuf >= 3.19.3, < 4.0.0',
+        'protobuf >= 3.19.3, < 6.0.0',
 
         'pip_services4_commons >= 0.0.1, < 1.0',
         'pip_services4_rpc >= 0.0.1, < 1.0',

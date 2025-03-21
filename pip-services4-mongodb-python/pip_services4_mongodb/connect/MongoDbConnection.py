@@ -147,7 +147,7 @@ class MongoDbConnection(IReferenceable, IConfigurable, IOpenable):
 
             # settings['use_new_url_parser'] = True
             # settings['use_undefined_topology'] = True
-            settings['appname'] = context
+            settings['appname'] = context.get('name') if context is not None else None
 
             uri = self._connection_resolver.resolve(context)
             settings = self.__del_none_objects(settings)

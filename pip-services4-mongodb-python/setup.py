@@ -23,7 +23,7 @@ from setuptools import setup
 
 setup(
     name='pip_services4_mongodb',
-    version='0.0.1',
+    version='0.0.2',
     url='http://github.com/pip-services4-python/pip-services4-mongodb-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',

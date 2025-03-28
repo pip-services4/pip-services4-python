@@ -3,6 +3,7 @@
 import os
 
 from pip_services4_components.config import ConfigParams
+from pip_services4_components.context import Context
 
 from pip_services4_mongodb.connect.MongoDbConnection import MongoDbConnection
 
@@ -10,6 +11,7 @@ from pip_services4_mongodb.connect.MongoDbConnection import MongoDbConnection
 class TestDbConnection:
     persistence = None
     fixture = None
+    context = None
 
     connection = None
 
@@ -27,13 +29,17 @@ class TestDbConnection:
                                              'connection.host', cls.mongoHost,
                                              'connection.port', cls.mongoPort,
                                              'connection.database', cls.mongoDatabase)
+        
+        cls.context = Context.from_tuples('name', 'dummy_test'
+                                      'description', '...')
+        
         cls.connection = MongoDbConnection()
         cls.connection.configure(db_config)
-        cls.connection.open(None)
+        cls.connection.open(cls.context)
 
     @classmethod
     def teardown_class(cls):
-        cls.connection.close(None)
+        cls.connection.close(cls.context)
 
     def test_open_and_close(self):
         assert hasattr(self.connection.get_connection(), '__iter__')

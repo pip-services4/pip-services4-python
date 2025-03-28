@@ -10,7 +10,7 @@ from pip_services4_components.refer import References, Descriptor
 
 from .DummyClientFixture import DummyClientFixture
 from .DummyDirectClient import DummyDirectClient
-from test.sample.DummyController import DummyController
+from test.sample.DummyService import DummyService
 
 
 class TestDummyDirectClient:
@@ -19,12 +19,12 @@ class TestDummyDirectClient:
 
     @classmethod
     def setup_class(cls):
-        controller = DummyController()
+        service = DummyService()
 
         cls.client = DummyDirectClient()
 
         references = References.from_tuples(
-            Descriptor("pip-services-dummies", "controller", "default", "default", "1.0"), controller,
+            Descriptor("pip-services-dummies", "service", "default", "default", "1.0"), service,
         )
         cls.client.set_references(references)
 

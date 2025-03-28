@@ -24,16 +24,16 @@ from pip_services4_rpc.trace.InstrumentTiming import InstrumentTiming
 
 class DirectClient(IConfigurable, IReferenceable, IOpenable):
     """
-    Abstract client that calls controller directly in the same memory space. It is used when multiple microservices are deployed in a single container (monolyth) and communication between them can be done by direct calls rather then through the network.
+    Abstract client that calls service directly in the same memory space. It is used when multiple microservices are deployed in a single container (monolyth) and communication between them can be done by direct calls rather then through the network.
 
     ### Configuration parameters ###
         - dependencies:
-            - controller:            override controller descriptor
+            - service:            override service descriptor
 
     ### References ###
         - `*:logger:*:*:1.0`           (optional) :class:`ILogger <pip_services4_observability.log.ILogger.ILogger>` components to pass log messages
         - `*:counters:*:*:1.0`         (optional) :class:`ICounters <pip_services4_observability.count.ICounters.ICounters>` components to pass collected measurements
-        - `*:controller:*:*:1.0`       controller to call business methods
+        - `*:service:*:*:1.0`       service to call business methods
 
     Example:
 
@@ -42,18 +42,18 @@ class DirectClient(IConfigurable, IReferenceable, IOpenable):
         class MyDirectClient(DirectClient, IMyClient):
             def __init__(self):
                 super(MyDirectClient, self).__init__()
-                self._dependencyResolver.put('controller', Descriptor("mygroup", "controller", "*", "*", "*"))
+                self._dependencyResolver.put('service', Descriptor("mygroup", "service", "*", "*", "*"))
 
             # ...
 
             def get_data(self, context, id):
                 timing = self.instrument(context, 'myclient.get_data')
-                result = self._controller.get_data(context, id)
+                result = self._service.get_data(context, id)
                 timing.end_timing()
                 return result
 
             client = MyDirectClient()
-            client.set_references(References.from_tuples(Descriptor("mygroup","controller","default","default","1.0"), controller))
+            client.set_references(References.from_tuples(Descriptor("mygroup","service","default","default","1.0"), service))
             data = client.get_data(Context.from_trace_id("123"), "1")
             # ...
     """
@@ -62,8 +62,8 @@ class DirectClient(IConfigurable, IReferenceable, IOpenable):
         """
         Creates a new instance of the client.
         """
-        # The controller reference.
-        self._controller: Any = None
+        # The service reference.
+        self._service: Any = None
         # The open flag.
         self._opened: bool = True
         # The logger.
@@ -72,9 +72,9 @@ class DirectClient(IConfigurable, IReferenceable, IOpenable):
         self._tracer: CompositeTracer = CompositeTracer()
         # The performance counters
         self._counters: CompositeCounters = CompositeCounters()
-        # The dependency resolver to get controller reference.
+        # The dependency resolver to get service reference.
         self._dependency_resolver: DependencyResolver = DependencyResolver()
-        self._dependency_resolver.put('controller', 'none')
+        self._dependency_resolver.put('service', 'none')
 
     def configure(self, config: ConfigParams):
         """
@@ -94,7 +94,7 @@ class DirectClient(IConfigurable, IReferenceable, IOpenable):
         self._counters.set_references(references)
         self._tracer.set_references(references)
         self._dependency_resolver.set_references(references)
-        self._controller = self._dependency_resolver.get_one_required('controller')
+        self._service = self._dependency_resolver.get_one_required('service')
 
     def _instrument(self, context: Optional[IContext], name: str) -> InstrumentTiming:
         """
@@ -146,9 +146,9 @@ class DirectClient(IConfigurable, IReferenceable, IOpenable):
         if self._opened:
             return
 
-        if self._controller is None:
-            raise ConnectionException(ContextResolver.get_trace_id(context), 'NO_CONTROLLER',
-                                      'Controller references is missing')
+        if self._service is None:
+            raise ConnectionException(ContextResolver.get_trace_id(context), 'NO_service',
+                                      'Service references is missing')
 
         self._opened = True
         self._logger.info(context, 'Opened direct client')

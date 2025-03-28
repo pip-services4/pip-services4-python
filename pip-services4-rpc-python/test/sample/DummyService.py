@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    test.DummyController
+    test.DummyService
     ~~~~~~~~~~~~~~~~~~~~
     
-    Dummy controller object
+    Dummy Service object
     
     :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
@@ -18,12 +18,12 @@ from pip_services4_data.query import FilterParams, PagingParams, DataPage
 from pip_services4_rpc.commands import ICommandable, CommandSet
 from pip_services4_components.context import IContext
 
-from test import Dummy
+from .Dummy import Dummy
 from .DummyCommandSet import DummyCommandSet
-from .IDummyController import IDummyController
+from .IDummyService import IDummyService
 
 
-class DummyController(IDummyController, ICommandable):
+class DummyService(IDummyService, ICommandable):
 
     def __init__(self):
         self.__lock = threading.Lock()

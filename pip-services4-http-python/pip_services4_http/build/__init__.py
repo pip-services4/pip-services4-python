@@ -3,12 +3,12 @@
     pip_services4_http.build.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Rpc build module implementation
+    Http build module implementation
 
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
-__all__ = ['DefaultRpcFactory']
+__all__ = ['DefaultHttpFactory']
 
-from .DefaultRpcFactory import DefaultRpcFactory
+from .DefaultHttpFactory import DefaultHttpFactory

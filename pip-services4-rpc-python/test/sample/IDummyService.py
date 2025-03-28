@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    test.IDummyController
+    test.IDummyService
     ~~~~~~~~~~~~~~~~~~~~~
     
-    Interface for dummy controllers
+    Interface for dummy services
     
     :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
@@ -13,10 +13,10 @@ from typing import Optional
 from pip_services4_data.query import FilterParams, PagingParams, DataPage
 from pip_services4_components.context import IContext
 
-from test import Dummy
+from .Dummy import Dummy
 
 
-class IDummyController:
+class IDummyService:
     def get_page_by_filter(self, context: Optional[IContext], filter: FilterParams, paging: PagingParams) -> DataPage:
         raise NotImplementedError('Method from interface definition')
 

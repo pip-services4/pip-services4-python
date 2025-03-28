@@ -19,17 +19,17 @@ from pip_services4_data.validate import ObjectSchema, FilterParamsSchema, Paging
 from pip_services4_rpc.commands import Command, CommandSet, ICommand
 
 
-from test.sample import IDummyController, Dummy
+from test.sample import IDummyService, Dummy
 from test.sample.DummySchema import DummySchema
 
 
 class DummyCommandSet(CommandSet):
-    _controller: IDummyController
+    _service: IDummyService
 
-    def __init__(self, controller):
+    def __init__(self, service):
         super(DummyCommandSet, self).__init__()
 
-        self._controller = controller
+        self._service = service
 
         self.add_command(self._make_get_page_by_filter_command())
         self.add_command(self._make_get_one_by_id_command())
@@ -42,7 +42,7 @@ class DummyCommandSet(CommandSet):
         def handler(context: Optional[IContext], args: Parameters):
             filter = FilterParams.from_value(args.get("filter"))
             paging = PagingParams.from_value(args.get("paging"))
-            page = self._controller.get_page_by_filter(context, filter, paging)
+            page = self._service.get_page_by_filter(context, filter, paging)
             return page
 
         return Command(
@@ -55,7 +55,7 @@ class DummyCommandSet(CommandSet):
     def _make_get_one_by_id_command(self) -> ICommand:
         def handler(context: Optional[IContext], args: Parameters):
             id = args.get_as_string("dummy_id")
-            return self._controller.get_one_by_id(context, id)
+            return self._service.get_one_by_id(context, id)
 
         return Command(
             "get_dummy_by_id",
@@ -66,7 +66,7 @@ class DummyCommandSet(CommandSet):
             entity = args.get("dummy")
             if isinstance(entity, dict):
                 entity = Dummy.from_json(entity)
-            return self._controller.create(context, entity)
+            return self._service.create(context, entity)
 
         return Command(
             "create_dummy",
@@ -79,7 +79,7 @@ class DummyCommandSet(CommandSet):
             entity = args.get("dummy")
             if isinstance(entity, dict):
                 entity = Dummy.from_json(entity)
-            return self._controller.update(context, entity)
+            return self._service.update(context, entity)
 
         return Command(
             "update_dummy",
@@ -90,7 +90,7 @@ class DummyCommandSet(CommandSet):
     def _make_delete_by_id_command(self) -> ICommand:
         def handler(context: Optional[IContext], args: Parameters):
             id = args.get_as_string("dummy_id")
-            return self._controller.delete_by_id(context, id)
+            return self._service.delete_by_id(context, id)
 
         return Command(
             "delete_dummy",
@@ -100,7 +100,7 @@ class DummyCommandSet(CommandSet):
 
     def _make_check_trace_id(self) -> ICommand:
         def handler(context: Optional[IContext], args: Parameters):
-            value = self._controller.check_trace_id(context)
+            value = self._service.check_trace_id(context)
             return {'trace_id': value}
 
         return Command(

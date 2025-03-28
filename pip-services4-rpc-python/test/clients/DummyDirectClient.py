@@ -23,12 +23,12 @@ class DummyDirectClient(DirectClient, IDummyClient):
 
     def __init__(self):
         super(DummyDirectClient, self).__init__()
-        self._dependency_resolver.put('controller', Descriptor('pip-services-dummies', 'controller', '*', '*', '*'))
+        self._dependency_resolver.put('service', Descriptor('pip-services-dummies', 'service', '*', '*', '*'))
 
     def get_page_by_filter(self, context: Optional[IContext], filter: FilterParams, paging: PagingParams) -> DataPage:
         timing = self._instrument(context, 'dummy.get_page_by_filter')
         try:
-            return self._controller.get_page_by_filter(context, filter, paging)
+            return self._service.get_page_by_filter(context, filter, paging)
         except Exception as err:
             timing.end_failure(err)
         finally:
@@ -37,7 +37,7 @@ class DummyDirectClient(DirectClient, IDummyClient):
     def get_one_by_id(self, context: Optional[IContext], dummy_id: str) -> Dummy:
         timing = self._instrument(context, 'dummy.get_one_by_id')
         try:
-            return self._controller.get_one_by_id(context, dummy_id)
+            return self._service.get_one_by_id(context, dummy_id)
         except Exception as err:
             timing.end_failure(err)
         finally:
@@ -46,7 +46,7 @@ class DummyDirectClient(DirectClient, IDummyClient):
     def create(self, context: Optional[IContext], item: Dummy) -> Dummy:
         timing = self._instrument(context, 'dummy.create')
         try:
-            return self._controller.create(context, item)
+            return self._service.create(context, item)
         except Exception as err:
             timing.end_failure(err)
         finally:
@@ -55,7 +55,7 @@ class DummyDirectClient(DirectClient, IDummyClient):
     def update(self, context: Optional[IContext], item: Dummy) -> Dummy:
         timing = self._instrument(context, 'dummy.update')
         try:
-            return self._controller.update(context, item)
+            return self._service.update(context, item)
         except Exception as err:
             timing.end_failure(err)
         finally:
@@ -64,7 +64,7 @@ class DummyDirectClient(DirectClient, IDummyClient):
     def delete_by_id(self, context: Optional[IContext], dummy_id: str) -> Dummy:
         timing = self._instrument(context, 'dummy.delete_by_id')
         try:
-            return self._controller.delete_by_id(context, dummy_id)
+            return self._service.delete_by_id(context, dummy_id)
         except Exception as err:
             timing.end_failure(err)
         finally:
@@ -73,7 +73,7 @@ class DummyDirectClient(DirectClient, IDummyClient):
     def check_trace_id(self, context: Optional[IContext]) -> str:
         timing = self._instrument(context, 'dummy.check_trace_id')
         try:
-            return self._controller.check_trace_id(context)
+            return self._service.check_trace_id(context)
         except Exception as err:
             timing.end_failure(err)
         finally:

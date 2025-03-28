@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services4_http.build.DefaultRpcFactory
+    pip_services4_http.build.DefaultHttpFactory
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    DefaultRpcFactory implementation
+    DefaultHttpFactory implementation
 
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
@@ -14,9 +14,9 @@ from pip_services4_components.refer import Descriptor
 from ..controller import HttpEndpoint, StatusRestController, HeartbeatRestController
 
 
-class DefaultRpcFactory(Factory):
+class DefaultHttpFactory(Factory):
     """
-    Creates RPC components by their descriptors.
+    Creates Http components by their descriptors.
     """
 
     HttpEndpointDescriptor = Descriptor("pip-services", "endpoint", "http", "*", "1.0")
@@ -27,7 +27,7 @@ class DefaultRpcFactory(Factory):
         """
         Create a new instance of the factory.
         """
-        super(DefaultRpcFactory, self).__init__()
+        super(DefaultHttpFactory, self).__init__()
         self.register_as_type(self.HttpEndpointDescriptor, HttpEndpoint)
         self.register_as_type(self.StatusServiceDescriptor, StatusRestController)
         self.register_as_type(self.HeartbeatServiceDescriptor, HeartbeatRestController)

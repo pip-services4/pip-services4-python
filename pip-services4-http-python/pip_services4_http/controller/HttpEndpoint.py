@@ -191,7 +191,22 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             keyfile = connection.get_as_nullable_string('ssl_key_file')
 
         # Create instance of bottle application
-        self.__service = SessionMiddleware(bottle.Bottle(catchall=True, autojson=True)).app
+        app = bottle.Bottle(catchall=True, autojson=True)
+
+        # TODO: Temporary solution for processing preflight OPTIONS requests
+        @app.error(405)
+        def generic_error_handler405(error):
+            self.__enable_cors()
+            return f"{error.status_code} Error: {error.body}"
+
+        # TODO: redo the processing of preflight OPTIONS requests
+        @app.route('/<:re:.*>', method='OPTIONS')
+        def handle_options():
+            response.status = 200
+            self.__enable_cors()
+            return ''
+
+        self.__service = SessionMiddleware(app).app
 
         self.__service.config['catchall'] = True
         self.__service.config['autojson'] = True

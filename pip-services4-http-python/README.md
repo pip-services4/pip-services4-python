@@ -64,3 +64,14 @@ Before committing changes run dockerized build and test as:
 The Python version of Pip.Services is created and maintained by
 - **Sergey Seroukhov**
 - **Danil Prisiazhnyi**
+
+## Notes
+Implemented a temporary workaround in HttpEndpoint to handle CORS preflight OPTIONS requests. The endpoint now responds with a 200 OK status to all incoming OPTIONS requests. This is a provisional solution and should be replaced with proper CORS handling in the future.
+```python
+@app.route('/<:re:.*>', method='OPTIONS')
+def handle_options():
+    response.status = 200
+    self.__enable_cors()
+    return ''
+
+```

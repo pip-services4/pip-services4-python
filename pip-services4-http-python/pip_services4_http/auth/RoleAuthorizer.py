@@ -10,25 +10,26 @@ from pip_services4_http.controller.HttpResponseSender import HttpResponseSender
 class RoleAuthorizer:
     def user_in_roles(self, roles: List[str]) -> Callable:
         def inner():
-            user = bottle.request.user
+            user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                return HttpResponseSender.send_error(UnauthorizedException(
+                raise bottle.HTTPResponse(body=HttpResponseSender.send_error(UnauthorizedException(
                     None,
                     'NOT_SIGNED',
                     'User must be signed in to perform this operation'
-                ).with_status(401))
+                ).with_status(401)), status=401)
+                
             else:
                 authorized = False
                 for role in roles:
                     authorized = authorized or role in user.roles
 
                 if not authorized:
-                    return HttpResponseSender.send_error(UnauthorizedException(
+                    raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'NOT_IN_ROLE',
                         'User must be ' +
                         ' or '.join(roles) + ' to perform this operation'
-                    ).with_details('roles', roles).with_status(403))
+                    ).with_details('roles', roles).with_status(403)), status=403)
 
         return inner
 

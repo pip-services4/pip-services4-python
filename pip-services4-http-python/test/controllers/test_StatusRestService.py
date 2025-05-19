@@ -36,8 +36,8 @@ class TestStatusRestController():
         contextInfo.description = "This is a test container"
 
         references = References.from_tuples(
-            Descriptor("pip-controller", "context-info", "default", "default", "1.0"), contextInfo,
-            Descriptor("pip-controller-dummies", "controller", "http", "default", "1.0"), cls.controller
+            Descriptor("pip-services", "context-info", "default", "default", "1.0"), contextInfo,
+            Descriptor("pip-services-dummies", "controller", "http", "default", "1.0"), cls.controller
         )
 
         cls.controller.set_references(references)

@@ -37,8 +37,8 @@ class TestDummyCommandableHttpClient:
         cls.controller.configure(rest_config)
 
         references = References.from_tuples(
-            Descriptor("pip-controller-dummies", "service", "default", "default", "1.0"), service,
-            Descriptor("pip-controller-dummies", "controller", "http", "default", "1.0"), cls.controller
+            Descriptor("pip-services-dummies", "service", "default", "default", "1.0"), service,
+            Descriptor("pip-services-dummies", "controller", "http", "default", "1.0"), cls.controller
         )
 
         cls.controller.set_references(references)

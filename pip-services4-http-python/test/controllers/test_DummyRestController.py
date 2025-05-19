@@ -46,8 +46,8 @@ class TestDummyRestController:
         cls.controller.configure(rest_config)
 
         references = References.from_tuples(
-            Descriptor("pip-controller-dummies", "service", "default", "default", "1.0"), cls.srv,
-            Descriptor("pip-controller-dummies", "controller", "http", "default", "1.0"), cls.controller
+            Descriptor("pip-services-dummies", "service", "default", "default", "1.0"), cls.srv,
+            Descriptor("pip-services-dummies", "controller", "http", "default", "1.0"), cls.controller
         )
 
         cls.controller.set_references(references)
@@ -153,8 +153,8 @@ class TestDummyRestController:
         self.controller.configure(service_config)
 
         references = References.from_tuples(
-            Descriptor('pip-controller-dummies', 'service', 'default', 'default', '1.0'), ctrl,
-            Descriptor('pip-controller-dummies', 'controller', 'rest', 'default', '1.0'), self.controller
+            Descriptor('pip-services-dummies', 'service', 'default', 'default', '1.0'), ctrl,
+            Descriptor('pip-services-dummies', 'controller', 'rest', 'default', '1.0'), self.controller
         )
         self.controller.set_references(references)
 

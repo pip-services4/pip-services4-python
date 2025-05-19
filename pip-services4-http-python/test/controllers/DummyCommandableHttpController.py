@@ -17,7 +17,7 @@ class DummyCommandableHttpController(CommandableHttpController):
 
     def __init__(self):
         super(DummyCommandableHttpController, self).__init__('dummy')
-        self._dependency_resolver.put('service', Descriptor('pip-controller-dummies', 'service', '*', '*', '*'))
+        self._dependency_resolver.put('service', Descriptor('pip-services-dummies', 'service', '*', '*', '*'))
 
     def register(self):
         if not self._swagger_auto and self._swagger_enabled:

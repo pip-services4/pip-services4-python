@@ -46,9 +46,9 @@ class TestHttpEndpointController():
         cls.endpoint.configure(rest_config)
 
         references = References.from_tuples(
-            Descriptor("pip-controller-dummies", "service", "default", "default", "1.0"), service,
-            Descriptor('pip-controller-dummies', 'controller', 'rest', 'default', '1.0'), cls.controller,
-            Descriptor('pip-controller', 'endpoint', 'http', 'default', '1.0'), cls.endpoint
+            Descriptor("pip-services-dummies", "service", "default", "default", "1.0"), service,
+            Descriptor('pip-services-dummies', 'controller', 'rest', 'default', '1.0'), cls.controller,
+            Descriptor('pip-services', 'endpoint', 'http', 'default', '1.0'), cls.endpoint
         )
 
         cls.controller.set_references(references)

@@ -71,7 +71,7 @@ class StatusRestController(RestController):
         Creates a new instance of this controller.
         """
         super(StatusRestController, self).__init__()
-        self._dependency_resolver.put("context-info", Descriptor("pip-controller", "context-info", "default", "*", "1.0"))
+        self._dependency_resolver.put("context-info", Descriptor("pip-services", "context-info", "default", "*", "1.0"))
         self.__start_time: datetime.datetime = datetime.datetime.now()
         self.__references2: IReferences = None
         self.__context_info: ContextInfo = None

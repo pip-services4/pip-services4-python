@@ -12,7 +12,7 @@ class DefaultGrpcFactory(Factory):
 
     See :class:`Factory <pip_services4_components.build.Factory.Factory>`, :class:`GrpcEndpoint <pip_services4_grpc.controllers.GrpcEndpoint.GrpcEndpoint>`, :class:`HeartbeatGrpcController <pip_services4_grpc.controllers.HeartbeatGrpcController.HeartbeatGrpcController>`, :class:`StatusGrpcController <pip_services4_grpc.controllers.StatusGrpcController.StatusGrpcController>`
     """
-    GrpcEndpointDescriptor = Descriptor("pip-controllers", "endpoint", "grpc", "*", "1.0")
+    GrpcEndpointDescriptor = Descriptor("pip-services", "endpoint", "grpc", "*", "1.0")
 
     def __init__(self):
         """

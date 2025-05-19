@@ -24,7 +24,7 @@ class StatusOperations(RestOperations):
 
         self._dependency_resolver.put(
             'context-info',
-            Descriptor('pip-controller', 'context-info', 'default', '*', '1.0')
+            Descriptor('pip-services', 'context-info', 'default', '*', '1.0')
         )
 
     def set_references(self, references: IReferences):

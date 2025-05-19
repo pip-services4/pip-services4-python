@@ -28,7 +28,7 @@ class DummyRestController(RestController):
     def __init__(self):
         super(DummyRestController, self).__init__()
         self._dependency_resolver.put('service',
-                                      Descriptor("pip-controller-dummies", "service", "default", "*", "*"))
+                                      Descriptor("pip-services-dummies", "service", "default", "*", "*"))
 
         self._service: IDummyService = None
         self._number_of_calls = 0

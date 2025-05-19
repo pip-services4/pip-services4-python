@@ -22,7 +22,7 @@ class AboutOperations(RestOperations):
         super(AboutOperations, self).set_references(references)
 
         self.__context_info = references.get_one_optional(
-            Descriptor('pip-controller', 'context-info', '*', '*', '*')
+            Descriptor('pip-services', 'context-info', '*', '*', '*')
         )
 
     def get_about_operation(self) -> Callable:

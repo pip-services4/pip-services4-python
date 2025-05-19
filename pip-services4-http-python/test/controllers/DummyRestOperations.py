@@ -22,7 +22,7 @@ class DummyRestOperations(RestOperations, ABC):
 
     def __init__(self):
         super(DummyRestOperations, self).__init__()
-        self._dependency_resolver.put('service', Descriptor('pip-controller-dummies', 'service', 'default', '*', '*'))
+        self._dependency_resolver.put('service', Descriptor('pip-services-dummies', 'service', 'default', '*', '*'))
 
     def set_references(self, references):
         super(DummyRestOperations, self).set_references(references)

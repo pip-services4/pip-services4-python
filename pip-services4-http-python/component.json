@@ -2,7 +2,7 @@
     "name":  "pip-services4-http",
     "type": "module",
     "language": "python",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "build": 0,
     "registry": "pipservices",
     "artifacts": [

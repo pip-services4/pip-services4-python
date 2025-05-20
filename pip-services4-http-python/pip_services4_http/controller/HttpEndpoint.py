@@ -419,6 +419,7 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             # bottle.request.params['args'] = args
             
             authorize()
+            return next_action(*args, **kwargs)
 
         if authorize:
             next_action = action

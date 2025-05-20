@@ -418,17 +418,7 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             bottle.request.params['kwargs'] = kwargs
             # bottle.request.params['args'] = args
             
-            result = authorize()
-            # TODO: temporary solution for hooks not working on authorize error
-            if isinstance(result, bottle.HTTPResponse):
-                result.headers['Access-Control-Max-Age'] = '5'
-                result.headers['Access-Control-Allow-Origin'] = ', '.join(self.__allowed_origins)
-                result.headers['Access-Control-Allow-Methods'] = 'PUT, GET, POST, DELETE, OPTIONS'
-                result.headers['Access-Control-Allow-Headers'] = ', '.join(self.__allowed_headers)
-                result.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-                result.headers['Pragma'] = 'no-cache'
-                result.headers['Expires'] = 0
-                return result  
+            authorize()
 
         if authorize:
             next_action = action

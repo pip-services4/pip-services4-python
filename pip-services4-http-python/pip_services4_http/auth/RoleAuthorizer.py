@@ -12,11 +12,17 @@ class RoleAuthorizer:
         def inner():
             user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                return bottle.HTTPResponse(body=HttpResponseSender.send_error(UnauthorizedException(
+                raise bottle.HTTPResponse(body=HttpResponseSender.send_error(UnauthorizedException(
                     None,
                     'NOT_SIGNED',
                     'User must be signed in to perform this operation'
-                ).with_status(401)), status=401)
+                ).with_status(401)), status=401, headers={
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate',
+                    'Pragma': 'no-cache'
+                })
                 
             else:
                 authorized = False
@@ -24,12 +30,18 @@ class RoleAuthorizer:
                     authorized = authorized or role in user.roles
 
                 if not authorized:
-                    return bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
+                    raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'NOT_IN_ROLE',
                         'User must be ' +
                         ' or '.join(roles) + ' to perform this operation'
-                    ).with_details('roles', roles).with_status(403)), status=403)
+                    ).with_details('roles', roles).with_status(403)), status=403, headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                        'Pragma': 'no-cache'
+                    })
 
         return inner
 

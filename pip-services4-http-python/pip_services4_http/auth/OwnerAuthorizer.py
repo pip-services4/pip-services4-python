@@ -13,19 +13,31 @@ class OwnerAuthorizer:
         def inner():
             user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                return bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
+                raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                     None,
                     'NOT_SIGNED',
                     'User must be signed in to perform this operation'
-                ).with_status(401)), status=401)
+                ).with_status(401)), status=401, headers={
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate',
+                    'Pragma': 'no-cache'
+                })
             else:
                 user_id = dict(bottle.request.query.decode()).get(id_param)
                 if bottle.request.user_id != user_id:
-                    return bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
+                    raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'FORBIDDEN',
                         'Only data owner can perform this operation'
-                    ).with_status(403)), status=403)
+                    ).with_status(403)), status=403, headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                        'Pragma': 'no-cache'
+                    })
 
         return inner
 
@@ -33,13 +45,20 @@ class OwnerAuthorizer:
         def inner():
             user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                return bottle.HTTPResponse(
+                raise bottle.HTTPResponse(
                     body=HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'NOT_SIGNED',
                         'User must be signed in to perform this operation'
                     ).with_status(401)),
-                    status=401
+                    status=401, 
+                    headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                        'Pragma': 'no-cache'
+                    }
                 )
             user_id = dict(bottle.request.query.decode()).get(id_param)
 
@@ -47,12 +66,19 @@ class OwnerAuthorizer:
             is_admin = roles and 'admin' in roles
 
             if str(user.get('id')) != str(user_id) and not is_admin:
-                return bottle.HTTPResponse(
+                raise bottle.HTTPResponse(
                     body=HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'FORBIDDEN',
                         'Only data owner can perform this operation'
                     ).with_status(403)),
-                    status=403
+                    status=403,
+                    headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+                        'Cache-Control': 'no-store, no-cache, must-revalidate',
+                        'Pragma': 'no-cache'
+                    }
                 )
         return inner

@@ -13,7 +13,7 @@ class OwnerAuthorizer:
         def inner():
             user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
+                return bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                     None,
                     'NOT_SIGNED',
                     'User must be signed in to perform this operation'
@@ -21,7 +21,7 @@ class OwnerAuthorizer:
             else:
                 user_id = dict(bottle.request.query.decode()).get(id_param)
                 if bottle.request.user_id != user_id:
-                    raise bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
+                    return bottle.HTTPResponse(HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'FORBIDDEN',
                         'Only data owner can perform this operation'
@@ -33,7 +33,7 @@ class OwnerAuthorizer:
         def inner():
             user = bottle.request.environ.get('bottle.request.ext.user')
             if user is None:
-                raise bottle.HTTPResponse(
+                return bottle.HTTPResponse(
                     body=HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'NOT_SIGNED',
@@ -47,7 +47,7 @@ class OwnerAuthorizer:
             is_admin = roles and 'admin' in roles
 
             if str(user.get('id')) != str(user_id) and not is_admin:
-                raise bottle.HTTPResponse(
+                return bottle.HTTPResponse(
                     body=HttpResponseSender.send_error(UnauthorizedException(
                         None,
                         'FORBIDDEN',

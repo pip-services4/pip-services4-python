@@ -20,7 +20,7 @@ class RoleAuthorizer:
             else:
                 authorized = False
                 for role in roles:
-                    authorized = authorized or role in user.roles
+                    authorized = authorized or role in user.get('roles', [])
 
                 if not authorized:
                     raise UnauthorizedException(

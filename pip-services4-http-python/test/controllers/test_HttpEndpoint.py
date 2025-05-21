@@ -60,18 +60,27 @@ class TestHttpEndpointController():
         self.endpoint.close(None)
 
     def test_crud_operations(self):
-        response = self.invoke("/api/v1/dummies", DUMMY1.to_json())
+        response = self.invoke("/api/v1/dummies", DUMMY1.to_json(), "POST")
 
-        dummy1 = Dummy(**response)
+        dummy1 = Dummy(**response.json())
 
         assert dummy1 is not None
         assert DUMMY1.key == dummy1.key
         assert DUMMY1.content == dummy1.content
 
-    def invoke(self, route, entity):
+        response = self.invoke("/api/v1/dummies/"+str(dummy1.id), str(dummy1.id), "GET")
+        
+        dummy1 = Dummy(**response.json())
+
+        assert dummy1 is not None
+        assert DUMMY1.key == dummy1.key
+        assert DUMMY1.content == dummy1.content
+
+
+    def invoke(self, route, entity, method):
         route = "http://localhost:3004" + route
 
         # Call the service
         data = json.dumps(entity)
-        response = requests.request('POST', route, json=data, timeout=5)
-        return response.json()
+        response = requests.request(method, route, json=data, timeout=5)
+        return response

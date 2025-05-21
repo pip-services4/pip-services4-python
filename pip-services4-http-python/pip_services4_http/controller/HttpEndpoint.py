@@ -191,22 +191,7 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             keyfile = connection.get_as_nullable_string('ssl_key_file')
 
         # Create instance of bottle application
-        app = bottle.Bottle(catchall=True, autojson=True)
-
-        # TODO: Temporary solution for processing preflight OPTIONS requests
-        @app.error(405)
-        def generic_error_handler405(error):
-            self.__enable_cors()
-            return f"{error.status_code} Error: {error.body}"
-
-        # TODO: redo the processing of preflight OPTIONS requests
-        @app.route('/<:re:.*>', method='OPTIONS')
-        def handle_options():
-            response.status = 200
-            self.__enable_cors()
-            return ''
-
-        self.__service = SessionMiddleware(app).app
+        self.__service = SessionMiddleware(bottle.Bottle(catchall=True, autojson=True)).app
 
         self.__service.config['catchall'] = True
         self.__service.config['autojson'] = True
@@ -241,6 +226,10 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             self.__connection_resolver.register(context)
             self.__logger.debug(context, f"Opened REST service at {self.__uri}", )
             self.__perform_registrations()
+
+            # Route registration for OPTIONS (for preflight requests)
+            self.__register_options_route()
+
         except Exception as ex:
             self.__server = None
 
@@ -293,6 +282,22 @@ class HttpEndpoint(IOpenable, IConfigurable, IReferenceable):
             return route
 
         return ''
+    
+    def __register_options_route(self):
+        """
+        Route registration for OPTIONS (for preflight requests).
+        Responds to any route with method OPTIONS to support CORS.
+        """
+        def handle_options(path=None):
+            self.__enable_cors()
+            self.__do_maintance()
+            self.__no_cache()
+            self.__add_compatibility()
+            return ''
+
+        # Register wildcard route for OPTIONS method
+        self.__service.route('/<path:re:.*>', method='OPTIONS', callback=handle_options)
+
 
     def register_route(self, method: str, route: str, schema: Schema, handler: Callable):
         """

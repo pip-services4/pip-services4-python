@@ -19,6 +19,7 @@ from pip_services4_data.validate import ObjectSchema, FilterParamsSchema
 
 from pip_services4_http.controller import AboutOperations
 from pip_services4_http.controller import RestController
+from test.controllers.Authorize import AuthorizerV1
 from .. import IDummyService, Dummy
 from ..DummySchema import DummySchema
 
@@ -105,8 +106,13 @@ class DummyRestController(RestController):
             return self.send_result({'trace_id': result})
         except Exception as err:
             return self.send_error(err)
+        
+    def __load_session(self):
+        bottle.request.user = "user_123"
 
     def register(self):
+        self.register_interceptor('', lambda: self.__load_session())
+
         self.register_interceptor('/dummies$', self._increment_number_of_calls)
 
         self.register_route('get', '/dummies', ObjectSchema(True)
@@ -114,10 +120,6 @@ class DummyRestController(RestController):
                             .with_optional_property("take", TypeCode.String)
                             .with_optional_property("total", TypeCode.String)
                             .with_optional_property("body", FilterParamsSchema()), self.__get_page_by_filter)
-
-        self.register_route('get', '/dummies/<dummy_id>', ObjectSchema(True)
-                            .with_required_property("dummy_id", TypeCode.String),
-                            self.__get_one_by_id)
 
         self.register_route('post', '/dummies', ObjectSchema(True)
                             .with_required_property("body", DummySchema()),
@@ -135,6 +137,13 @@ class DummyRestController(RestController):
                             ObjectSchema(True), self.__check_trace_id)
 
         self.register_route('post', '/about', None, AboutOperations().get_about)
+
+        self.register_route("get", "/raise", None, self.__error_test)
+
+        auth = AuthorizerV1()
+        self.register_route_with_auth('get', '/dummies/<dummy_id>', ObjectSchema(True)
+            .with_required_property("dummy_id", TypeCode.String), auth.signed(),
+            self.__get_one_by_id)
 
         if self._swagger_content:
             self._register_open_api_spec(self._swagger_content)

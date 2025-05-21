@@ -315,14 +315,7 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
         if self._endpoint is None:
             return
 
-        route = f"{self.fix_route(self._base_route)}{self.fix_route(route)}"
-        # if not (self._base_route is None) and len(self._base_route) > 0:
-        #     base_route = self._base_route
-        #     if base_route[0] != '/':
-        #         base_route = '/' + base_route
-        #     if route[0] != '/':
-        #         base_route = base_route + '/'
-        #     route = base_route + route
+        route = self._append_base_route(route)
         self._endpoint.register_route(method, route, schema, handler)
 
     @abstractmethod
@@ -346,11 +339,12 @@ class RestController(IOpenable, IConfigurable, IReferenceable, IUnreferenceable,
     def _append_base_route(self, route):
         route = route or ''
 
-        if self._base_route is not None and len(self._base_route) > 0:
-            base_route = self._base_route
-            if base_route[0] != '/':
-                base_route = '/' + base_route
-                route = base_route + route
+        # if self._base_route is not None and len(self._base_route) > 0:
+        #     base_route = self._base_route
+        #     if base_route[0] != '/':
+        #         base_route = '/' + base_route
+        #         route = base_route + route
+        route = f"{self.fix_route(self._base_route)}{self.fix_route(route)}"
         return route
 
     def register_route_with_auth(self, method: str, route: str, schema: Schema, authorize: Callable, action: Callable):

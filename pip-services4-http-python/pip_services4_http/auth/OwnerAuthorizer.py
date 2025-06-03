@@ -38,7 +38,7 @@ class OwnerAuthorizer:
                     'NOT_SIGNED',
                     'User must be signed in to perform this operation'
                 ).with_status(401)
-            user_id = dict(bottle.request.query.decode()).get(id_param)
+            user_id = bottle.request.environ.get('bottle.request.ext.' + id_param)
 
             roles = user.get('roles') if isinstance(user, dict) else None
             is_admin = roles and 'admin' in roles

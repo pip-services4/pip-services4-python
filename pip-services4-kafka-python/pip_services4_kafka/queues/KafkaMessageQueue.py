@@ -489,13 +489,13 @@ class KafkaMessageQueue(MessageQueue, IKafkaMessageListener, IUnreferenceable, I
         msg = message.get_reference()
 
         # Skip on autocommit
-        if self._auto_commit or msg is None or msg.get('partition') or msg.get('offset') is None:
+        if self._auto_commit or msg is None or msg.get('partition') is None or msg.get('offset') is None:
             return
 
         # Commit the message offset so it won't come back
         topic = self._get_topic()
 
-        self._connection.commit(topic, self._group_id, msg['partition'], msg['offset'], self)
+        self._connection.commit(topic, self._group_id, msg['partition'], msg['offset'] + 1, self)
 
     def abandon(self, message: MessageEnvelope):
         """
@@ -513,7 +513,7 @@ class KafkaMessageQueue(MessageQueue, IKafkaMessageListener, IUnreferenceable, I
         msg = message.get_reference()
 
         # Skip on autocommit
-        if self._auto_commit or msg is None or msg.get('partition') or msg.get('offset') is None:
+        if self._auto_commit or msg is None or msg.get('partition') is None or msg.get('offset') is None:
             return
 
         # Seek to the message offset so it will come back

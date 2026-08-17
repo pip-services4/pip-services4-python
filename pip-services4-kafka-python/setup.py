@@ -22,7 +22,7 @@ except:
 
 setup(
     name='pip_services4_kafka',
-    version='0.0.1',
+    version='0.0.2',
     url='http://github.com/pip-services4/pip-services4-python/tree/main/pip-services4--kafka-python',
     license='MIT',
     author='Conceptual Vision Consulting LLC',
